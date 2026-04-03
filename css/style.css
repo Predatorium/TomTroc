@@ -320,6 +320,45 @@ footer .textFooter {
     justify-content: space-between;
     width: 50%;
 }
+
+/** 
+ * Page de connexion \ inscription.
+ */
+
+.login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    width: 100%;
+}
+
+.login .left {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    height: 75%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 50%;
+}
+
+.formGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.formGrid > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 /** 
  * Page de detail d'un livre.
  */
@@ -349,6 +388,95 @@ footer .textFooter {
     align-items: center;
     gap: 10px;
 }
+
+/** 
+ * Page mon compte.
+ */
+
+.account {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 150px;
+}
+
+.accountContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.accountContainer .userInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.userInfo .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 150px;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.userInfo .left > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.userInfo .right {
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: white;
+    padding: 35px 0px;
+}
+
+.accountArticles {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.accountArticles .legend{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    text-align: justify;
+    padding: 25px 50px 10px 50px;
+    font-size: 8px;
+    font-weight: 600;
+    background-color: white;
+    gap: 25px;
+}
+
+.accountArticles .article {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+    justify-content: center;
+    padding: 25px 50px;
+    gap: 25px;
+}
+
+.accountArticles .article .action {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.accountArticles .article:nth-child(odd) {
+    background-color: #EDF2F6;
+}
+
+.accountArticles .article:nth-child(even) {
+    background-color: white;
+}
+
 /** 
  * Vignette des livres.
  */

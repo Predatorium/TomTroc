@@ -27,6 +27,36 @@ try {
             $booksController->showDetailBook();
             break;
 
+        case 'addUser':
+            $accountController = new AccountController();
+            $accountController->addUser();
+            break;
+
+        case 'login':
+            $accountController = new AccountController();
+            $accountController->showLogin();
+            break;
+
+        case 'register':
+            $accountController = new AccountController();
+            $accountController->showRegister();
+            break;
+
+        case 'account':
+            $accountController = new AccountController();
+            $accountController->showAccount();
+            break;
+
+        case 'connectUser':
+            $accountController = new AccountController();
+            $accountController->connectUser();
+            break;
+
+        case 'disconnectUser':
+            $accountController = new AccountController();
+            $accountController->disconnectUser();
+            break;
+
         default:
             throw new Exception("La page demandée n'existe pas.");
     }
