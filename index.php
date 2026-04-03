@@ -16,6 +16,17 @@ try {
             $homeController = new HomeController();
             $homeController->showHome();
             break;
+
+        case 'books':
+            $booksController = new BooksController();
+            $booksController->showBooks();
+            break;
+
+        case 'detailBook':
+            $booksController = new BooksController();
+            $booksController->showDetailBook();
+            break;
+
         default:
             throw new Exception("La page demandée n'existe pas.");
     }

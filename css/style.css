@@ -301,6 +301,54 @@ footer .textFooter {
     left: 65px;
     bottom: 25px;
 }
+
+/** 
+ * Page d'échange.
+ */
+
+.exchange {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.exchange .head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+}
+/** 
+ * Page de detail d'un livre.
+ */
+
+.detailBookPage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.detailBookPage .right {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 80px;
+    height: 100%;
+    gap: 50px;
+}
+
+.detailBookPage .right .bookdetail{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.bookdetail .autor{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
 /** 
  * Vignette des livres.
  */
