@@ -1,0 +1,338 @@
+/**
+ * Reset css.
+ */
+* {
+    margin: 0px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/**
+ * Déclaration des constants.
+ */
+:root {
+    --footerColor: #FFFFFF;
+    --textColor : #292929;
+    --greyLight: #F5F3EF;
+    --backgroundLight : #FAF9F7;
+    --greyText: #A6A6A6;
+    --primaryGreen: #00AC66;
+    --secundaryGreen: #006D41;
+
+    --fontTitle: 'Playfair Display';
+    --fontInter: 'Inter';
+}
+
+/**
+ * Valeur par défaut pour les balises.
+ */
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--backgroundLight);
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+h1,h2 {
+    font-family: var(--fontTitle);
+    font-weight: normal;
+}
+
+h3,p {
+    font-family: var(--fontInter);
+}
+
+/**
+ * class utile pour les balises.
+ */
+
+.titleCenter {
+    text-align: center;
+}
+
+.lightText{
+    font-weight: 300;
+}
+
+.greyColor {
+    color: var(--greyText);
+}
+
+.italic {
+    font-style: italic;
+}
+
+.resetLink {
+    text-decoration: none;
+    color: var(--textColor);
+}
+
+.fontSize16 {
+    font-size: 16px;
+}
+
+.fontSize14 {
+    font-size: 14px;
+}
+
+.fontSize12 {
+    font-size: 12px;
+}
+
+/**
+ * Header
+ */
+header {
+    width: 100%;
+    height: 80px;
+    background-color: var(--greyLight);
+}
+
+/** 
+ * Footer global de la page.
+ */
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 50px;
+    padding: 20px 50px;
+    width: 100%;
+    height: 61px;
+    color: var(--textColor);
+    background-color: var(--footerColor);
+}
+
+footer .textFooter {
+    font-size: 12px;
+}
+
+/**
+ * Navigation global de la page.
+ */
+
+.mainNav {
+    font-family: var(--fontInter);
+    display: flex;
+    flex-direction: row;
+    align-items: center;        /* vertical */
+    justify-content: space-between;    /* horizontal */
+    width: 100%;
+    height: 100%;
+    padding: 0px 150px;
+}
+
+.mainNav .navLeft {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr;
+    align-items: center;        /* vertical */
+    gap: 50px;
+    width: 40%;
+}
+
+.mainNav .navRight {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;        /* vertical */
+    gap: 50px;
+    width: 30%;
+}
+
+.mainNav .Link:hover {
+    font-weight: 600;
+}
+
+/** 
+ * Bouton.
+ */
+
+.button {
+    border-radius: 10px;
+    padding: 22px 38px;
+    text-decoration: none;
+    width: max-content;
+}
+
+.button.green {
+    color: white;
+    background-color: var(--primaryGreen);
+}
+
+.button.green:hover {
+    color: white;
+    background-color: var(--secundaryGreen);
+}
+
+.button.borderGreen {
+    border: 1px;
+    border-style: solid;
+    color: var(--primaryGreen);
+    border-color: var(--primaryGreen);
+}
+
+.button.borderGreen:hover {
+    color: white;
+    border-style: none;
+    background-color: var(--secundaryGreen);
+}
+
+/** 
+ * Page d'accueil.
+ */
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;        /* vertical */
+    justify-content: center;    /* horizontal */
+}
+
+/** 
+ * Partie decouverte de l'accueil.
+ */
+
+.discover {
+    margin: 80px 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;        /* vertical */
+    justify-content: center;    /* horizontal */
+    width: 42%;
+    gap: 50px;
+}
+
+.discover .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    /* horizontal */
+    gap: 50px;
+}
+
+.discover .left .blockText {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.discover .right {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 15px;
+}
+
+/** 
+ * Partie derniers livres de l'accueil.
+ */
+
+.lastBooks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--backgroundLight);
+    width: 100%;
+    padding: 50px 0px;
+}
+
+/** 
+ * Partie à propos de l'accueil.
+ */
+
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    padding: 80px 0px 50px 0px;
+    width: 100%;
+}
+
+.aboutSubsection {
+    width: 20%;
+}
+
+.aboutBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+    width: 50%;
+    padding-bottom: 50px;
+}
+
+.aboutBox > p {
+    border-radius: 10px;
+    padding: 44px 15px;
+    background-color: white;
+    font-size: 14px;
+}
+
+.banner {
+    padding-top: 50px;
+    width: 100%;
+}
+
+.aboutSubsection .signed {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 25px;
+}
+
+.signed .heart {
+    position: relative;
+    left: 65px;
+    bottom: 25px;
+}
+/** 
+ * Vignette des livres.
+ */
+
+.articles {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 80px 0px;
+    width: 50%;
+}
+
+.article {
+    background-color: white;
+}
+
+.article .link {
+    display: block;
+}
+
+.articleInfo {
+    padding: 15px;
+}
+
+.article .link .autor {
+    font-size: 14px;
+    padding-top: 5px;
+}
+
+.article .link .sellBy {
+    font-size: 10px;
+    padding: 15px 0px;
+}
