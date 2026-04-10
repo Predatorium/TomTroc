@@ -1,0 +1,23 @@
+/** 
+ * Page de connexion \ inscription.
+ */
+
+.login {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.login .imageLogin {
+    width: 50%;
+    object-fit: cover;
+}
+
+.login .left {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 50%;
+    height: 75%;
+    padding-top: 5rem;
+}

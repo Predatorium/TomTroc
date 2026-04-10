@@ -1,0 +1,112 @@
+/**
+ * Déclaration des constants.
+ */
+
+:root {
+    --textColor : #292929;
+    --greyLight: #F5F3EF;
+    --backgroundLight : #FAF9F7;
+    --greyText: #A6A6A6;
+    --primaryGreen: #00AC66;
+    --secundaryGreen: #006D41;
+
+    --fontTitle: 'Playfair Display';
+    --fontInter: 'Inter';
+
+    --heightScreen: calc(100dvh - 5rem - 4rem);
+}
+
+/**
+ * class utile pour les balises.
+ */
+
+@media (max-width: 992px) {
+    
+    :root {
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    div.fullScreen {
+        height: auto;
+        overflow: auto;
+    }
+}
+
+div.fullScreen {
+    height: var(--heightScreen);
+    overflow: hidden;
+}
+
+.titleCenter {
+    text-align: center;
+}
+
+.lightText{
+    font-weight: 300;
+}
+
+.greyColor {
+    color: var(--greyText);
+}
+
+.italic {
+    font-style: italic;
+}
+
+.resetLink {
+    text-decoration: none;
+    color: var(--textColor);
+}
+
+.fontSize16 {
+    font-size: 16px;
+}
+
+.fontSize14 {
+    font-size: 14px;
+}
+
+.fontSize12 {
+    font-size: 12px;
+}
+
+/** 
+ * Bouton.
+ */
+
+.button {
+    border-radius: 10px;
+    padding: 1.4rem 2.4rem;
+    text-decoration: none;
+    text-align: center;
+}
+
+.button.resize {
+    width: max-content;
+}
+
+.button.green {
+    color: white;
+    background-color: var(--primaryGreen);
+}
+
+.button:hover {
+    color: white;
+    background-color: var(--secundaryGreen);
+}
+
+.button.borderGreen {
+    border: 1px;
+    border-style: solid;
+    color: var(--primaryGreen);
+    border-color: var(--primaryGreen);
+}
+
+.button.borderGreen:hover {
+    color: white;
+    background-color: var(--secundaryGreen);
+}

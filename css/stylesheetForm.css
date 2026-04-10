@@ -1,0 +1,40 @@
+@import "stylesheetUtils.css";
+
+/** 
+ * Style pour les formulaires.
+ */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 50%;
+}
+
+.formGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.formGrid > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.formGrid > div > input {
+    border: 1px;
+    border-radius: 6px;
+    border-color: #F0F0F0;
+    height: 3rem;
+    padding: 1rem;
+}
+
+.formGrid.white > div > input {
+    background-color: white;
+}
+
+.formGrid.grey > div > input {
+    background-color: #EDF2F6;
+}

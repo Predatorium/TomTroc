@@ -43,11 +43,37 @@ class UserManager extends AbstractEntityManager
             'pass_word' => $user->getPassword()
         ]);
 
-        if ($result->rowCount() > 0){
+        if ($result->rowCount() > 0) {
             return $this->db->getPDO()->lastInsertId();
         }
         else {
-             throw new Exception("L'utilisateur n'a pas pu être créer.");
+            throw new Exception("L'utilisateur n'a pas pu être créer.");
         }
+    }
+
+    /**
+     * Modifie un utilisateur.
+     * @param User $user : utilisateur à modifier.
+     * @return void
+     */
+    public function updateAccount(User $user) : void
+    {
+        $sql = "UPDATE users SET pseudo = :pseudo, email = :email, pass_word = :pass_word";
+        $this->db->query($sql, [
+            'pseudo' => $user->getPseudo(),
+            'email' => $user->getEmail(),
+            'pass_word' => $user->getPassword(),
+        ]);
+    }
+
+    /**
+     * Modifie un utilisateur.
+     * @param User $user : utilisateur à modifier.
+     * @return void
+     */
+    public function updatePicture(string $picture) : void
+    {
+        $sql = "UPDATE users SET picture = :picture";
+        $this->db->query($sql, ['picture' => $picture]);
     }
 }

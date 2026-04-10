@@ -1,0 +1,109 @@
+@import "stylesheetUtils.css";
+
+/**
+ * Header
+ */
+
+header {
+    width: 100%;
+    height: 5rem;
+    background-color: var(--greyLight);
+}
+ 
+/**
+ * PC
+ */
+
+.mainNav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 0 10%;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+.mainNav .navLeft {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr;
+    align-items: center;
+    gap: 50px;
+    width: 40%;
+}
+
+.mainNav .navRight {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 50px;
+    width: 30%;
+}
+
+.dropdownNav {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 0 10%;
+}
+
+.mainNav .Link:hover {
+    font-weight: 600;
+}
+
+.menu-toggle {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--greyText);
+}
+
+/**
+ * Mobile
+ */
+@media (max-width: 768px) {
+
+    .mainNav {
+        display: none;
+    }
+
+    .dropdownNav {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    /* on garde logo + burger visibles */
+    .mainNav {
+        justify-content: space-between;
+        padding: 0 5%;
+    }
+
+    /* menu caché par défaut */
+    .navMenu {
+        display: none;
+        position: absolute;
+        top: 5rem;
+        left: 0;
+        width: 100%;
+        height: max-content;
+        background-color: var(--greyLight);
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .navMenu.active {
+        display: flex;
+    }
+}

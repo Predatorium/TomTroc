@@ -61,4 +61,23 @@ class Utils {
         
         return $finalString;
     }
+
+    public static function dateSince(DateTime $date) : string
+    {
+        $now = new DateTime();
+        $interval = $date->diff($now);
+
+        if ($interval->y > 0){
+            return $interval->y . " an" . ($interval->y > 1 ? "s" : ""); 
+        }
+        else if ($interval->m > 0){
+            return $interval->m . " mois";
+        }
+        return $interval->d . " jour" . ($interval->d > 1 ? "s" : "");
+    }
+
+    public static function isMyBook(int $userId): bool
+    {
+        return $userId === $_SESSION["userId"];
+    }
 }

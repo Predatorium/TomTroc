@@ -27,6 +27,16 @@ try {
             $booksController->showDetailBook();
             break;
 
+        case 'account':
+            $accountController = new AccountController();
+            $accountController->showAccount();
+            break;
+
+        case 'userProfil':
+            $accountController = new AccountController();
+            $accountController->showUserProfil();
+            break;
+            
         case 'addUser':
             $accountController = new AccountController();
             $accountController->addUser();
@@ -40,11 +50,6 @@ try {
         case 'register':
             $accountController = new AccountController();
             $accountController->showRegister();
-            break;
-
-        case 'account':
-            $accountController = new AccountController();
-            $accountController->showAccount();
             break;
 
         case 'connectUser':

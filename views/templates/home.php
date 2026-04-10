@@ -11,41 +11,43 @@
                 <h1>Rejoignez nos lecteurs passionnés</h1>
                 <p class="lightText">Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres.
             </div>
-            <p><a href="index.php?action=books" class="button green">Découvrir</a>
+            <a href="index.php?action=books" class="button resize green">Découvrir</a>
         </div>
         <div class="right">
-            <img src = "./resources/unsplashHome.png" alt="unplashHome">
-            <p class="greyColor italic fontSize12">Hamza
+            <img src = "./resources/unsplashHome.png" alt="imageDiscover" class="imageDiscover">
+            <p class="greyColor italic autor">Hamza
         </div>
     </div>
     <div class="lastBooks">
         <h2 class="titleCenter">Les derniers livres ajoutés</h2>
         <article class="articles">
-            <?php  for ($article = 0; $article < 4; $article++){ ?>
+            <?php  foreach ($books as $book){ ?>
                 <div class="article">
-                    <a href="index.php?action=detailBook" class="link resetLink">
-                        <img src = "./resources/Esther.svg" alt="unplashArticle">
+                    <a href="index.php?action=detailBook&book_id=<?= $book->getId() ?>" class="link resetLink">
+                        <img src = <?= $book->getPicture() ?> alt="unplashArticle" class="image">
                         <div class="articleInfo">
-                            <h3>Esther</h3>
-                            <p class="autor greyColor">Alabaster</p>
-                            <p class="sellBy greyColor italic">Vendu par : CamilleClubLit</p>
+                            <p><h3><?= $book->getTitle() ?></h3></p>
+                            <p class="autor greyColor"><?= $book->getAutor() ?></p>
+                            <p class="sellBy greyColor italic">Vendu par : <?= $userManager->getUserById($book->getUserId())->getPseudo() ?></p>
                         </div>
                     </a>
                 </div>
             <?php  }?>
         </article>
-        <p><a href="index.php?action=books" class="button green">Voir tous les livres</a>
+        <a href="index.php?action=books" class="button resize green">Voir tous les livres</a>
     </div>
     <div class="about">
         <h2 class="titleCenter">Comment ça marche ?</h2>
-        <p class="aboutSubsection lightText fontSize16">Échanger des livres avec TomTroc c’est simple et amusant ! Suivez ces étapes pour commencer :</p>
+        <p class="aboutSubsection lightText">Échanger des livres avec TomTroc c’est simple et amusant ! Suivez ces étapes pour commencer :</p>
         <div class="aboutBox titleCenter fontSize14">
             <p>Inscrivez-vous gratuitement sur notre plateforme.</p>
             <p>Ajoutez les livres que vous souhaitez échanger à votre profil.</p>
             <p>Parcourez les livres disponibles chez d'autres membres.</p>
             <p>Proposez un échange et discutez avec d'autres passionnés de lecture.</p>
         </div>
-        <p><a href="index.php?action=books" class="button borderGreen">Voir tous les livres</a></p>
+        <div class="about button">
+            <a href="index.php?action=books" class="button resize borderGreen">Voir tous les livres</a>
+        </div>
         <img src = "./resources/bannerAbout.svg" alt="banner" class="banner">
         <div class="aboutSubsection lightText fontSize16">
             <h2>Nos valeurs</h2>

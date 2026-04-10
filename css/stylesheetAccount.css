@@ -1,0 +1,177 @@
+@import "stylesheetUtils.css";
+
+/** 
+ * Page mon compte.
+ */
+
+.account {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 10%;
+}
+
+.accountContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+}
+
+.accountContainer .userInfo {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    width: 100%;
+}
+
+.userInfo .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 20px;
+    background-color: white;
+    padding: 3rem;
+    width: 100%;
+}
+
+.userInfo .left .profilPicture {
+    width: 8.5rem;
+    height: 8.5rem;
+    border-radius: 50%;
+}
+
+.userInfo .left .pseudo {
+    font-family: var(--fontTitle);
+    font-size: 1.5rem;
+    padding: 0.6rem;
+}
+
+.userInfo .left .listedSince {
+    color: var(--greyText);
+    font-size: 0.8rem;
+    padding-bottom: 1.2rem;
+}
+
+.userInfo .left .library {
+    font-size: 0.5rem;
+    font-weight: 600;
+    padding-bottom: 0.4rem;
+}
+
+.userInfo .left .nbBooks {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.1rem;
+    font-size: 0.8rem;
+}
+
+.userInfo .left > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.userInfo .right {
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: white;
+    padding: 2rem 0px;
+    width: 100%;
+}
+
+.accountBooks {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+}
+
+.accountBooks .legend {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    text-align: justify;
+    padding: 1.5rem 3rem 0.6rem 3rem;
+    font-size: 0.5rem;
+    font-weight: 600;
+    background-color: white;
+    gap: 2%;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.accountBooks .book {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 3rem;
+    gap: 2%;
+    font-size: 0.7rem;
+}
+
+.accountBooks .book .image {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+}
+
+.accountBooks .book .available {
+    padding: 0.25rem 0.8rem;
+    border-radius: 1.8rem;
+    color: white;
+    background-color: #6DC5A1;
+    width: max-content;
+}
+
+.accountBooks .book .unavailable {
+    padding: 0.25rem 0.8rem;
+    border-radius: 1.8rem;
+    color: white;
+    background-color: #C56D6D;
+    width: max-content;
+}
+
+.accountBooks .book .action {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.action .edit{
+    color: black;
+}
+
+.action .delete{
+    color: red;
+}
+
+.accountBooks .book:nth-child(odd) {
+    background-color: #EDF2F6;
+}
+
+.accountBooks .book:nth-child(even) {
+    background-color: white;
+}
+
+.accountBooks .buttonAdd {
+    border-radius: 0px 0px 20px 20px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 3rem;
+    
+    border: 1px;
+    border-style: solid;
+    color: var(--primaryGreen);
+    border-color: var(--primaryGreen);
+}
+
+.accountBooks .buttonAdd:hover {
+    color: white;
+    background-color: var(--secundaryGreen);
+}

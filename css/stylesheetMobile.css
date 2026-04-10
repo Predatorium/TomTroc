@@ -1,0 +1,56 @@
+@media (max-width: 768px) {
+    /*
+     * La page d'accueil
+     */
+
+    .discover {
+        flex-direction: column-reverse;
+        align-items: center;        /* vertical */
+        justify-content: center;    /* horizontal */
+        padding: 0 0 5rem 0;
+        width: 100%;
+    }
+
+    .discover .right .imageDiscover {
+        width: 100%;
+        object-fit: cover
+    }
+
+    .discover .right .autor {
+        padding: 0 1.8rem;
+    }
+    
+    .aboutBox {
+        grid-template-columns: none;
+    }
+
+    .about.button {
+        padding: 0 5%;
+    }
+
+    .aboutSubsection .signed {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .signed .heart {
+        position: relative;
+        left: 0;
+        bottom: 0;
+        width: 8.5rem;
+        align-self: center;
+        padding-top: 3rem;
+    }
+    
+    /*
+     * La page mon compte
+     */
+
+    .accountContainer .userInfo {
+        flex-direction: column;
+    }
+
+    .button.resize {
+        width: 100%;
+    }
+}

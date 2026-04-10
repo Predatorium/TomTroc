@@ -1,0 +1,154 @@
+/** 
+ * Page d'échange.
+ */
+
+.exchange {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 4%;
+    gap: 3rem;
+}
+
+.exchange .head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 57.5rem;
+    gap: 1rem;
+    width: 100%;
+}
+
+.exchange .head .searchArea {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 0.5rem;
+    border-radius: 6px;
+    height: 3rem;
+    padding: 0.7rem;
+    background-color: white;
+    max-width: 22rem;
+}
+
+.searchArea > input {
+    border-radius: 0;
+    border: 0;
+    width: 100%;
+}
+
+.searchArea > input:focus {
+    outline: none;
+}
+
+/** 
+ * Page de detail d'un livre.
+ */
+
+.detailBookPage {
+    display: flex;
+    flex-direction: row;
+}
+
+.detailBookPage .imageDetailBook {
+    width: 50%;
+    object-fit: cover;
+}
+
+.detailBookPage .right {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 3rem 5rem;
+    height: 100%;
+    width: 50%;
+    gap: 3rem;
+}
+
+.detailBookPage .right .bookdetail {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.bookdetail .autor {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: max-content;
+    gap: 0.6rem;
+}
+
+.bookdetail .autor .imageAutor {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+/** 
+ * Vignette des livres.
+ */
+
+.articles {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    max-width: 57.5rem;
+}
+
+.article {
+    background-color: white;
+}
+
+.article .link {
+    display: block;
+    width: 12rem;
+    height: 20rem;
+}
+
+.link .image {
+    height: 12rem;
+    width: 12rem;
+    object-fit: cover;
+}
+
+.articleInfo {
+    padding: 1rem;
+}
+
+.article .link .autor {
+    font-size: 0.8rem;
+    padding-top: 0.3rem;
+}
+
+.article .link .sellBy {
+    font-size: 0.6rem;
+    padding: 1rem 0;
+}
+
+@media (max-width: 590px) {
+    .exchange .head {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .articles {
+        gap: 1rem;
+    }
+
+    .article .link {
+        width: 11.5rem;
+        height: 18.5rem;
+    }
+
+    .link .image {
+        height: 11.5rem;
+        width: 11.5rem;
+    }
+}

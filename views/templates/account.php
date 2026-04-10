@@ -10,38 +10,41 @@
         <div class="userInfo">
             <div class="left">
                 <div>
-                    <img src = "./resources/imageAutor.svg" alt="imageAutor" class="imageAutor">
+                    <img src = <?= $user->getPicture()?> alt="profilPicture" class="profilPicture">
                     <a href="">modifier</a>
                 </div>
                 <div>
-                    <p>nathalire</p>
-                    <p>Membre depuis 1 an</p>
-                    <p>BIBLIOTHEQUE</p>
-                    <p><img src = "">4 livres</p>
+                    <p class ="pseudo"><?= $user->getPseudo()?></p>
+                    <p class="listedSince">Membre depuis <?= Utils::dateSince($user->getDateCreation()) ?></p>
+                    <p class="library">BIBLIOTHEQUE</p>
+                    <p class="nbBooks">
+                        <img src = "./resources/iconeBook.svg"> 
+                        <?= count($books)?> livre<?= count($books) > 1 ? "s" : ""?>
+                    </p>
                 </div>
             </div>
             <div class="right">
-                <form action="index.php?action=updateUser&userId=<?= $_SESSION['idUser'] ?>" method="post" class="form">
+                <form action="index.php?action=updateUser&userId=<?= $userId ?>" method="post" class="form">
                     <h3>Vos informations personnelles</h3>
-                    <div class="formGrid">
+                    <div class="formGrid grey">
                         <div>
                             <label for="email" class="greyColor">Adresse email</label>
-                            <input type="email" name="email" id="email" required>
+                            <input type="email" name="email" id="email" placeholder=<?= $user->getEmail()?>>
                         </div>
                         <div>
                             <label for="password" class="greyColor">Mot de passe</label>
-                            <input type="password" name="password" id="password" required>
+                            <input type="password" name="password" id="password">
                         </div>
                         <div>
                             <label for="pseudo" class="greyColor">Pseudo</label>
-                            <input type="text" name="pseudo" id="pseudo" required>
+                            <input type="text" name="pseudo" id="pseudo" placeholder=<?= $user->getPseudo()?>>
                         </div>
                     </div>
                     <button class="button borderGreen">Enregistrer</button>
                 </form>
             </div>
         </div>
-        <article class="accountArticles">
+        <article class="accountBooks">
             <div class="legend">
                 <p>PHOTO</p>
                 <p>TITRE</p>
@@ -50,19 +53,20 @@
                 <p>DISPONIBILITE</p>
                 <p>ACTION</p>
             </div>
-            <?php  for ($article = 0; $article < 4; $article++){ ?>
-                <div class="article">
-                    <img src = "./resources/imageDetailBook.png" alt="imageDetailBook">
-                    <p>The Kinkfolk Table</p>
-                    <p>Nathan Williams</p>
-                    <p>J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté pa</p>
-                    <p class="available">disponible</p>
+            <?php  foreach ($books as $book){ ?>
+                <div class="book">
+                    <img src = <?= $book->getPicture() ?> alt="image" class="image">
+                    <p><?= $book->getTitle() ?></p>
+                    <p><?= $book->getAutor() ?></p>
+                    <p><?= $book->getDescription(120) ?></p>
+                    <p class=<?= $book->getAvailable() ? "available" : "unavailable" ?>><?= $book->getAvailableToString() ?></p>
                     <div class="action">
-                        <a href="index.php?action=account">Éditer</a>
-                        <a href="index.php?action=account">Supprimer</a>
+                        <a href="index.php?action=editBook&book_id=<?= $book->getId() ?>" class="edit">Éditer</a>
+                        <a href="index.php?action=deleteBook&book_id=<?= $book->getId() ?>" class="delete">Supprimer</a>
                     </div>
                 </div>
             <?php  }?>
+            <a href="index.php?action=newBook" class="buttonAdd">+</a>
         </article>
     </div>
 </div>
