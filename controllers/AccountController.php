@@ -52,6 +52,10 @@ class AccountController {
         $userManager = new UserManager();
         $user = $userManager->getUserById($userId);
 
+        if (!$user) {
+            throw new Exception("L'utilisateur demandé n'existe pas.");
+        }
+
         $bookManager = new BookManager();
         $books = $bookManager->getAllBooksOfUserID($userId);
 
@@ -133,6 +137,7 @@ class AccountController {
     {
         // On déconnecte l'utilisateur.
         unset($_SESSION['user']);
+        unset($_SESSION['userId']);
 
         // On redirige vers la page d'accueil.
         Utils::redirect("home");

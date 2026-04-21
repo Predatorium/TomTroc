@@ -19,6 +19,27 @@ class MessageManager extends AbstractEntityManager
         return $messages;
     }
 
+    public function getNewMessages(int $conversationId, int $lastId) : array
+    {
+        $sql = "SELECT * FROM messages 
+                WHERE conversation_id = :conversationId 
+                AND id > :lastId
+                ORDER BY id ASC";
+
+        $result = $this->db->query($sql, [
+            'conversationId' => $conversationId,
+            'lastId' => $lastId
+        ]);
+
+        $messages = [];
+
+        while ($message = $result->fetch()) {
+            $messages[] = new Message($message);
+        }
+
+        return $messages;
+    }
+
     /**
      * Envoyer un message.
      * @param Message $message : message à ajouter.
@@ -26,7 +47,7 @@ class MessageManager extends AbstractEntityManager
      */
     public function addMessage(Message $message) : void
     {
-        $sql = "INSERT INTO messages (conversation_id, sender_id, content, date_creation,) VALUES (:conversation_id, :sender_id, :content, NOW())";
+        $sql = "INSERT INTO messages (conversation_id, sender_id, content, date_creation) VALUES (:conversation_id, :sender_id, :content, NOW())";
         $this->db->query($sql, [
             'conversation_id' => $message->getConversationId(),
             'sender_id' => $message->getSenderId(),
@@ -42,6 +63,6 @@ class MessageManager extends AbstractEntityManager
     public function deleteMessages(int $conversationId) : void
     {
         $sql = "DELETE FROM messages WHERE conversation_id = :conversation_id";
-        $this->db->query($sql, ['id' => $conversationId]);
+        $this->db->query($sql, ['conversation_id' => $conversationId]);
     }
 }

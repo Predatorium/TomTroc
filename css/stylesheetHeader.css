@@ -49,7 +49,14 @@ header {
     justify-content: space-between;
     width: 100%;
     height: 100%;
-    padding: 0 10%;
+    padding: 0 6%;
+}
+
+.mainNav .Link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.2rem;
 }
 
 .mainNav .Link:hover {
@@ -81,25 +88,20 @@ header {
         display: block;
     }
 
-    /* on garde logo + burger visibles */
-    .mainNav {
-        justify-content: space-between;
-        padding: 0 5%;
-    }
-
     /* menu caché par défaut */
     .navMenu {
-        display: none;
         position: absolute;
         top: 5rem;
         left: 0;
-        width: 100%;
-        height: max-content;
-        background-color: var(--greyLight);
-
+        display: none;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        width: 100%;
+        height: max-content;
+        padding: 1rem 0;
+        background-color: var(--greyLight);
+
         gap: 2rem;
     }
 

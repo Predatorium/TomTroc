@@ -9,6 +9,7 @@ class Conversation extends AbstractEntity
     private int $user2ID;
     private string $lastMessage;
     private ?DateTime $dateCreation = null;
+    private ?DateTime $dateUpdate = null;
 
     /**
      * Setter pour l'id de l'utilisateur 1. 
@@ -71,9 +72,9 @@ class Conversation extends AbstractEntity
             if (strlen($this->lastMessage) > $length) {
                 $lastMessage .= "...";
             }
-            return $lastMessage;
+            return $lastMessage ?? "";
         }
-        return $this->lastMessage;
+        return $this->lastMessage ?? "";
     }
 
     /**
@@ -98,5 +99,29 @@ class Conversation extends AbstractEntity
     public function getDateCreation() : DateTime
     {
         return $this->dateCreation;
+    }
+
+        /**
+     * Setter pour la date de mise à jour. Si la date est une string, on la convertit en DateTime.
+     * @param string|DateTime $dateCreation
+     * @param string $format : le format pour la convertion de la date si elle est une string.
+     * Par défaut, c'est le format de date mysql qui est utilisé. 
+     */
+    public function setDateUpdate(string|DateTime $dateUpdate, string $format = 'Y-m-d H:i:s') : void
+    {
+        if (is_string($dateUpdate)) {
+            $dateUpdate = DateTime::createFromFormat($format, $dateUpdate);
+        }
+        $this->dateUpdate = $dateUpdate;
+    }
+
+    /**
+     * Getter pour la date de mise à jour.
+     * Grâce au setter, on a la garantie de récupérer un objet DateTime.
+     * @return DateTime
+     */
+    public function getDateUpdate() : DateTime
+    {
+        return $this->dateUpdate;
     }
 }

@@ -49,31 +49,68 @@
 
 .detailBookPage {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
-.detailBookPage .imageDetailBook {
+.detailBookPage .path {
+    padding: 1.2rem 10%;
+    font-size: 0.6rem;
+    color: var(--greyText);
+    font-weight: 300;
+}
+
+.detailBookPage .info {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.info .imageDetailBook {
     width: 50%;
     object-fit: cover;
 }
 
-.detailBookPage .right {
+.info .bookdetail {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    padding: 3rem 5rem;
+    padding: 5rem;
     height: 100%;
     width: 50%;
-    gap: 3rem;
-}
-
-.detailBookPage .right .bookdetail {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    gap: 0.7rem;
 }
 
 .bookdetail .autor {
+    color: var(--greyText);
+}
+
+.bookdetail .description {
+    font-size: 0.5rem;
+}
+
+.bookdetail .synopsis {
+    font-size: 0.85rem;
+    padding: 1rem 0 2rem 0;
+}
+
+.bookdetail .owner {
+    font-size: 0.5rem;
+}
+
+.bookdetail .pseudoUser {
+    font-size: 0.85rem;
+}
+
+.bookdetail .divider {
+    background-color: var(--greyText);
+    width: 1.6rem;
+}
+
+.bookdetail .userInfo {
+    padding: 1rem 0 4rem 0;
+}
+
+.bookdetail .user {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -81,17 +118,73 @@
     gap: 0.6rem;
 }
 
-.bookdetail .autor .imageAutor {
+.bookdetail .user .imageUser {
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
+    object-fit: cover;
+}
+
+/** 
+ * Edition des livres.
+ */
+
+.editBook {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.2rem 10% 7rem 10%;
+    width: 100%;
+    height: 100%;
+}
+
+.editBook .link {
+    color: var(--greyText);
+}
+
+.editBook .edit {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+
+    border-radius: 20px;
+    background-color: white;
+
+    padding: 3rem;
+    width: 100%;
+}
+
+.edit .picture {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    font-size: 0.85rem;
+}
+
+.edit .picture .imageBook {
+    width: 100%;
+    padding-top: 0.5rem;
+    padding-bottom: 1.2rem;    
+}
+
+.edit .picture .editPicture{
+    align-self: flex-end;
+    color: black;
+}
+
+.edit .info {
+    width: 50%;
+}
+
+.textArea {
+    height: 100%;
 }
 
 /** 
  * Vignette des livres.
  */
 
-.articles {
+.books {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -100,11 +193,11 @@
     max-width: 57.5rem;
 }
 
-.article {
+.books .book {
     background-color: white;
 }
 
-.article .link {
+.books .book .link {
     display: block;
     width: 12rem;
     height: 20rem;
@@ -120,14 +213,17 @@
     padding: 1rem;
 }
 
-.article .link .autor {
-    font-size: 0.8rem;
+.books .book .link .autor {
+    font-size: 0.85rem;
     padding-top: 0.3rem;
+    color: var(--greyText);
 }
 
-.article .link .sellBy {
+.books .book .link .sellBy {
     font-size: 0.6rem;
     padding: 1rem 0;
+    color: var(--greyText);
+    font-style: italic;
 }
 
 @media (max-width: 590px) {
@@ -138,11 +234,11 @@
 
 @media (max-width: 992px) {
 
-    .articles {
+    .books {
         gap: 1rem;
     }
 
-    .article .link {
+    .books .book .link {
         width: 11.5rem;
         height: 18.5rem;
     }
@@ -150,5 +246,42 @@
     .link .image {
         height: 11.5rem;
         width: 11.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .detailBookPage .path {
+        display: none;
+    }
+
+    .detailBookPage .info {
+        flex-direction: column;
+    }
+
+    .info .imageDetailBook {
+        width: 100%;
+    }
+
+    .info .bookdetail {
+        overflow: auto;
+        width: 100%;
+        padding: 5rem 5%;
+    }
+
+    .editBook {
+        padding: 1.2rem 6% 5rem 6%;
+    }
+
+    .edit .picture {
+        width: 100%;
+    }
+
+    .editBook .edit {
+        flex-direction: column;
+    }
+
+    .edit .info {
+        width: 100%;
     }
 }

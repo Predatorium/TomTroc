@@ -7,23 +7,23 @@
 <div class="login fullScreen">
     <div class="left">
         <form action="index.php?action=addUser" method="post" class="form">
-            <h2>Inscription</h2>
             <div class="formGrid white">
+                <h2>Inscription</h2>
                 <div>
-                    <label for="pseudo" class="greyColor">Pseudo</label>
+                    <label for="pseudo" class="label">Pseudo</label>
                     <input class="whiteInput" type="text" name="pseudo" id="pseudo" required>
                 </div>
                 <div>
-                    <label for="email" class="greyColor">Adresse email</label>
+                    <label for="email" class="label">Adresse email</label>
                     <input class="whiteInput" type="email" name="email" id="email" required>
                 </div>
                 <div>
-                    <label for="password" class="greyColor">Mot de passe</label>
+                    <label for="password" class="label">Mot de passe</label>
                     <input class="whiteInput" type="password" name="password" id="password" required>
                 </div>
+                <button class="button green">S’inscrire</button>
+                <p>Déjà inscrit ? <a href="index.php?action=login">Connectez-vous</a></p>
             </div>
-            <button class="button green">S’inscrire</button>
-            <p>Déjà inscrit ? <a href="index.php?action=login">Connectez-vous</a></p>
         </form>
     </div>
     <img src = "./resources/imageLogin.svg" alt="imageLogin" class="imageLogin">

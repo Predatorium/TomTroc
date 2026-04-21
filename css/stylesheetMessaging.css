@@ -1,0 +1,194 @@
+@import "stylesheetUtils.css";
+
+/** 
+ * Page de messageris.
+ */
+
+.messaging {
+    display: flex;
+    width: 100%;
+    padding: 0 10%;
+    gap: 3rem;
+    height: var(--heightScreen);
+    overflow: hidden;
+}
+
+.messaging .convs {
+    display: flex;
+    flex-direction: column;
+    width: 30%;    
+    background-color: var(--backgroundLight);
+    overflow-y: auto;
+}
+
+.messaging .convs > h3 {
+    padding: 5rem 0 2rem 2rem;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.conv {
+    display: flex;
+    flex-direction: row;
+    padding: 1.2rem 2rem;
+    width: 100%;
+}
+
+.conv:hover {
+    background-color: white;
+}
+
+.conv.selected {
+    background-color: white;
+}
+
+.conv .info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 0.75rem;
+}
+
+.conv .info .upper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    padding: 0.5rem 0;
+}
+
+.chat .link {
+    display: none;
+    font-size: 1rem;
+    color: var(--greyText);
+    padding: 2px;
+}
+
+.chat .user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5rem 0;
+    gap: 0.5rem;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.5rem 0;
+    padding-right: 2rem;
+    gap: 1.2rem;
+}
+
+.msg {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.date {
+    font-size: 12px;
+    color: var(--greyText);
+}
+
+.msg .upper {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.msg .upper .userPicture {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.msg.me {
+    align-items: flex-end;
+}
+
+.msg.me .content {
+    max-width: 60%;
+    background-color: #EDF2F6;
+    padding: 0.8rem 1rem;
+    border-radius: 3px;
+}
+
+.msg.other {
+    align-items: flex-start;
+}
+
+.msg.other .content{
+    max-width: 60%;
+    background-color: white;
+    padding: 0.8rem 1rem;
+    border-radius: 3px;
+}
+
+.chat .sendForm {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0.7rem 0;
+    gap: 1.2rem;
+}
+
+.sendForm .send {
+    border: 0;
+    background-color: white;
+    width: 100%;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.conv .picture,
+.user .picture {
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .messaging {
+        padding: 0;
+        gap: 0;
+    }
+
+    .messaging .convs,
+    .messaging .chat {
+        display: none;
+        width: 100%;
+    }
+
+    .messaging .chat {
+        padding: 0 6%;
+    }
+
+    .chat .link {
+        display: unset;
+    }
+
+    .convs.active,
+    .chat.active {
+        display: flex;
+    }
+
+    .chat .sendForm {
+        flex-direction: column;
+    }
+
+}

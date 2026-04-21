@@ -4,19 +4,13 @@
  * Page mon compte.
  */
 
-.account {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    padding: 5rem 10%;
-}
-
 .accountContainer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 3rem;
     width: 100%;
+    padding: 5rem 10%;
 }
 
 .accountContainer .userInfo {
@@ -33,7 +27,7 @@
     justify-content: space-between;
     border-radius: 20px;
     background-color: white;
-    padding: 3rem;
+    padding: 3rem 6%;
     width: 100%;
 }
 
@@ -41,6 +35,7 @@
     width: 8.5rem;
     height: 8.5rem;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .userInfo .left .pseudo {
@@ -83,7 +78,7 @@
     justify-content: center;
     border-radius: 20px;
     background-color: white;
-    padding: 2rem 0px;
+    padding: 2rem 6%;
     width: 100%;
 }
 
@@ -151,14 +146,6 @@
     color: red;
 }
 
-.accountBooks .book:nth-child(odd) {
-    background-color: #EDF2F6;
-}
-
-.accountBooks .book:nth-child(even) {
-    background-color: white;
-}
-
 .accountBooks .buttonAdd {
     border-radius: 0px 0px 20px 20px;
     text-decoration: none;
@@ -174,4 +161,83 @@
 .accountBooks .buttonAdd:hover {
     color: white;
     background-color: var(--secundaryGreen);
+}
+
+@media (min-width: 768px) {
+    .accountBooks .book:nth-child(odd) {
+        background-color: #EDF2F6;
+    }
+    
+    .accountBooks .book:nth-child(even) {
+        background-color: white;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .accountContainer {
+        padding: 5rem 6%;
+
+    }
+    .accountContainer .userInfo {
+        flex-direction: column;
+    }
+
+    .accountBooks .legend {
+        display: none;
+    }
+
+    .accountBooks {
+        gap: 1rem;
+    }
+
+    .accountBooks .buttonAdd {
+        border-radius: 20px;
+    }
+
+    .accountBooks .book {
+        grid-template-columns: 5rem 1fr;
+        grid-template-rows: 1rem 1rem 3rem 1fr 0.2fr;
+        padding: 3.5rem;
+        border-radius: 20px;
+        background-color: white;
+        font-size: 1rem;
+        column-gap: 1rem;
+    }
+
+    .accountBooks .book .image {
+        grid-row: 1 / 4;
+    }
+
+    .accountBooks .book .title {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .accountBooks .book .autor {
+        grid-column: 2;
+        grid-row: 2;
+    }
+    
+    .accountBooks .book .descrip {
+        grid-row: 4;
+        grid-column: 1 / 3;
+        padding-top: 0.5rem;
+        padding-bottom: 2rem;
+    }
+    
+    .accountBooks .book .available {
+        grid-column: 2;
+        grid-row: 3;
+    }
+    
+    .accountBooks .book .unavailable {
+        grid-column: 2;
+        grid-row: 3;
+    }
+    
+    .accountBooks .book .action {
+        grid-row: 5;
+        grid-column: 1 / 3;
+    }
 }

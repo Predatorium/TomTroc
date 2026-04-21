@@ -7,6 +7,20 @@
  */
 
 class Utils {
+    /**
+     * Convertit une date vers le format de type "Samedi 15 juillet 2023" en francais.
+     * @param DateTime $date : la date à convertir.
+     * @return string : la date convertie.
+     */
+    public static function convertDateToFrenchFormat(DateTime $date) : string
+    {
+        // Attention, s'il y a un soucis lié à IntlDateFormatter c'est qu'il faut
+        // activer l'extention intl_date_formater (ou intl) au niveau du serveur apache. 
+        // Ca peut se faire depuis php.ini ou parfois directement depuis votre utilitaire (wamp/mamp/xamp)
+        $dateFormatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::FULL);
+        $dateFormatter->setPattern('EEEE d MMMM Y');
+        return $dateFormatter->format($date);
+    }
     
     /**
      * Cette méthode permet de récupérer une variable de la superglobale $_REQUEST.
@@ -76,8 +90,20 @@ class Utils {
         return $interval->d . " jour" . ($interval->d > 1 ? "s" : "");
     }
 
-    public static function isMyBook(int $userId): bool
+    public static function isMe(int $userId): bool
     {
-        return $userId === $_SESSION["userId"];
+        if (isset($_SESSION['userId'])) {
+            return $userId === $_SESSION["userId"]; 
+        }
+        
+        return false;
+    }
+
+    public static function checkIfUserIsConnected() : void
+    {
+        // On vérifie que l'utilisateur est connecté.
+        if (!isset($_SESSION['user'])) {
+            Utils::redirect("login");
+        }
     }
 }

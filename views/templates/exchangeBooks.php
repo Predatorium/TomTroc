@@ -12,18 +12,7 @@
             <input type="text" id="searchInput" placeholder="Rechercher un livre...">
         </div>
     </div>
-    <article class="articles">
-        <?php  foreach ($books as $book){ ?>
-            <div class="article">
-                <a href="index.php?action=detailBook&book_id=<?= $book->getId() ?>" class="link resetLink">
-                    <img src = <?= $book->getPicture() ?> alt="unplashArticle" class="image">
-                    <div class="articleInfo">
-                        <p><h3><?= $book->getTitle() ?></h3></p>
-                        <p class="autor greyColor"><?= $book->getAutor() ?></p>
-                        <p class="sellBy greyColor italic">Vendu par : <?= $userManager->getUserById($book->getUserId())->getPseudo() ?></p>
-                    </div>
-                </a>
-            </div>
-        <?php  }?>
+    <article class="books" id="books">
+        <!-- Livres -->
     </article>
 </div>

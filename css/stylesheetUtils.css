@@ -20,41 +20,8 @@
  * class utile pour les balises.
  */
 
-@media (max-width: 992px) {
-    
-    :root {
-        font-size: 14px;
-    }
-}
-
-
-@media (max-width: 768px) {
-
-    div.fullScreen {
-        height: auto;
-        overflow: auto;
-    }
-}
-
-div.fullScreen {
-    height: var(--heightScreen);
-    overflow: hidden;
-}
-
 .titleCenter {
     text-align: center;
-}
-
-.lightText{
-    font-weight: 300;
-}
-
-.greyColor {
-    color: var(--greyText);
-}
-
-.italic {
-    font-style: italic;
 }
 
 .resetLink {
@@ -62,21 +29,22 @@ div.fullScreen {
     color: var(--textColor);
 }
 
-.fontSize16 {
-    font-size: 16px;
-}
-
-.fontSize14 {
-    font-size: 14px;
-}
-
-.fontSize12 {
-    font-size: 12px;
+.divider {
+    height: 1px;
+    width: 100%;
+    background-color: var(--greyLight);
+    margin: 20px 0;
 }
 
 /** 
  * Bouton.
  */
+
+button {
+    border: 0;
+    background-color: white;
+    color: white;
+}
 
 .button {
     border-radius: 10px;
@@ -94,11 +62,6 @@ div.fullScreen {
     background-color: var(--primaryGreen);
 }
 
-.button:hover {
-    color: white;
-    background-color: var(--secundaryGreen);
-}
-
 .button.borderGreen {
     border: 1px;
     border-style: solid;
@@ -106,7 +69,29 @@ div.fullScreen {
     border-color: var(--primaryGreen);
 }
 
-.button.borderGreen:hover {
+.button:hover {
     color: white;
     background-color: var(--secundaryGreen);
+}
+
+
+@media (max-width: 992px) {
+    
+    :root {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 769px) {
+
+    div.fullScreen {
+        height: var(--heightScreen);
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 768px) {
+    .button.resize {
+        width: 100%;
+    }
 }

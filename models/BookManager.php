@@ -59,8 +59,8 @@ class BookManager extends AbstractEntityManager
      */
     public function getAllBooksSearch(string $search) : array
     {
-        $sql = "SELECT * FROM books WHERE title = :search OR autor = :search";
-        $result = $this->db->query($sql, ['search' => $search]);
+        $sql = "SELECT * FROM books WHERE (title = :search OR autor = :search) AND available = :available";
+        $result = $this->db->query($sql, ['search' => $search, 'available' => 1]);
         $books = [];
 
         while ($book = $result->fetch()) {
@@ -88,7 +88,7 @@ class BookManager extends AbstractEntityManager
     /**
      * Récupère un article par son id.
      * @param int $id : l'id de l'article.
-     * @return Article|null : un objet Article ou null si l'article n'existe pas.
+     * @return Article|null : un objet Book ou null si l'article n'existe pas.
      */
     public function getBookById(int $id) : ?Book
     {
@@ -123,13 +123,14 @@ class BookManager extends AbstractEntityManager
      */
     public function addBook(Book $book) : void
     {
-        $sql = "INSERT INTO books (user_id, title, autor, description, picture, available) VALUES (:user_id, :title, :autor, :description, :picture, :1)";
+        $sql = "INSERT INTO books (user_id, title, autor, description, picture, available) VALUES (:user_id, :title, :autor, :description, :picture, :available)";
         $this->db->query($sql, [
-            'user_id' => $book->getIdUser(),
+            'user_id' => $book->getUserId(),
             'title' => $book->getTitle(),
             'autor' => $book->getAutor(),
             'description' => $book->getDescription(),
-            'picture' => $book->getPicture()
+            'picture' => $book->getPicture(),
+            'available' => $book->getAvailable()
         ]);
     }
 

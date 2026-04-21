@@ -13,13 +13,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TomTroc</title>
+        <title><?= "TomTroc - " . $title ?></title>
         <link rel="stylesheet" href="./css/style.css">
         <?php require_once './resources/fonts.php'; ?>
         <script src = "./script/script.js" defer> </script>
     </head>
 
-    <body>
+    <body data-page="<?= $title ?? '' ?>">
         
         <?php require_once TEMPLATE_VIEW_PATH . 'header.php'; ?>
 

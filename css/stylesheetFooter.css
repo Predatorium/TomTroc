@@ -17,6 +17,7 @@ footer {
 
 footer .textFooter {
     font-size: 0.7rem;
+    font-weight: 300;
 }
 
 @media (max-width: 768px) {

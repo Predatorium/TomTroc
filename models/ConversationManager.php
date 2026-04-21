@@ -19,6 +19,22 @@ class ConversationManager extends AbstractEntityManager
         }
         return $conversations;
     }
+
+    /**
+     * Récupère une conversation par son id.
+     * @param int $id : l'id de la conversation.
+     * @return Conversation|null : un objet Conversation ou null si la conversation n'existe pas.
+     */
+    public function getConversationsById(string $id) : ?Conversation
+    {
+        $sql = "SELECT * FROM conversations WHERE id = :id";
+        $result = $this->db->query($sql, ['id' => $id]);
+        $conversation = $result->fetch();
+        if ($conversation) {
+            return new Conversation($conversation);
+        }
+        return null;
+    }
     
     /**
      * Verifier que la conversation existe.
@@ -45,11 +61,10 @@ class ConversationManager extends AbstractEntityManager
      */
     public function addConversation(Conversation $conv) : void
     {
-        $sql = "INSERT INTO conversations (user1_id, user2_id, last_message, date_creation, date_update) VALUES (:user_id, :title, :last_message, NOW(), NOW())";
+        $sql = "INSERT INTO conversations (user1_id, user2_id, date_creation, date_update) VALUES (:user1_id, :user2_id, NOW(), NOW())";
         $this->db->query($sql, [
             'user1_id' => $conv->getUser1Id(),
             'user2_id' => $conv->getUser2Id(),
-            'last_message' => $conv->getLastMessage(),
         ]);
     }
 
@@ -60,7 +75,7 @@ class ConversationManager extends AbstractEntityManager
      */
     public function updateLastMessage(Message $message)
     {
-        $sql = "UPDATE books SET last_message = :lastMessage, date_update = NOW() WHERE id = :id";
+        $sql = "UPDATE conversations SET last_message = :lastMessage, date_update = NOW() WHERE id = :id";
         $this->db->query($sql, [
             'lastMessage' => $message->getContent(),
             'id' => $message->getConversationId(),

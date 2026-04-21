@@ -19,5 +19,20 @@
     justify-content: center;
     width: 50%;
     height: 75%;
-    padding-top: 5rem;
+    padding: 5rem 10%;
+}
+
+@media (max-width: 768px) {
+    .login {
+        flex-direction: column;
+    }
+
+    .login .imageLogin {
+        width: 100%;
+    }
+
+    .login .left {
+        width: 100%;
+        padding: 5rem 6%;
+    }
 }

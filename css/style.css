@@ -1,12 +1,13 @@
+@import "stylesheetUtils.css";
 @import "stylesheetheader.css";
 @import "stylesheetFooter.css";
 @import "stylesheetHome.css";
 @import "stylesheetBook.css";
 @import "stylesheetLogin.css";
 @import "stylesheetAccount.css";
-@import "stylesheetUtils.css";
 @import "stylesheetForm.css";
-@import "stylesheetMobile.css";
+@import "stylesheetUserProfil.css";
+@import "stylesheetMessaging.css";
 
 /**
  * Reset css.
@@ -31,24 +32,25 @@ main {
 
 h1 {
     font-size: 2.2rem;
-    font-weight: 400;
 }
 
 h2 {
     font-size: 2rem;
-    font-weight: 400;
 }
 
 h3 {
+    font-size: 1.6rem;
+}
+
+h4 {
     font-size: 1rem;
+}
+
+h1,h2,h3 {
+    font-family: var(--fontTitle);
     font-weight: 400;
 }
 
-h1,h2 {
-    font-family: var(--fontTitle);
-    font-weight: normal;
-}
-
-h3,p {
+h4,p,a {
     font-family: var(--fontInter);
 }
