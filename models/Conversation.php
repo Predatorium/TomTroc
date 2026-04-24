@@ -10,6 +10,8 @@ class Conversation extends AbstractEntity
     private string $lastMessage;
     private ?DateTime $dateCreation = null;
     private ?DateTime $dateUpdate = null;
+    private bool $unreadUser1 = true;
+    private bool $unreadUser2 = true;
 
     /**
      * Setter pour l'id de l'utilisateur 1. 
@@ -123,5 +125,25 @@ class Conversation extends AbstractEntity
     public function getDateUpdate() : DateTime
     {
         return $this->dateUpdate;
+    }
+
+    public function setUnreadUser1(bool $unread): void
+    {
+        $this->unreadUser1 = $unread;
+    }
+
+    public function getUnreadUser1(): bool
+    {
+        return $this->unreadUser1;
+    }
+
+    public function setUnreadUser2(bool $unread): void
+    {
+        $this->unreadUser2 = $unread;
+    }
+
+    public function getUnreadUser2(): bool
+    {
+        return $this->unreadUser2;
     }
 }

@@ -25,7 +25,7 @@ class ConversationManager extends AbstractEntityManager
      * @param int $id : l'id de la conversation.
      * @return Conversation|null : un objet Conversation ou null si la conversation n'existe pas.
      */
-    public function getConversationsById(string $id) : ?Conversation
+    public function getConversationsById(int $id) : ?Conversation
     {
         $sql = "SELECT * FROM conversations WHERE id = :id";
         $result = $this->db->query($sql, ['id' => $id]);
@@ -42,16 +42,35 @@ class ConversationManager extends AbstractEntityManager
      * @param int $senderUserId : l'id de mon correspondant.
      * @return void
      */
-    public function existConversation(int $myUserId, int $senderUserId) : bool
+    public function existConversation(int $myUserId, int $senderUserId) : int
     {
         $sql = "SELECT * FROM conversations WHERE user1_id = LEAST(:myUserId, :senderUserId) AND user2_id = GREATEST(:myUserId, :senderUserId);";
         $result = $this->db->query($sql, ['myUserId' => $myUserId, 'senderUserId' => $senderUserId]);
-        $conv = $result->fetch();
+        $conv = new Conversation($result->fetch());
 
         if ($conv) {
-            return true;
+            return $conv->getId();
         }
-        return false;
+        return -1;
+    }
+
+    /**
+     * Verifier que la conversation existe.
+     * @param int $myUserId : mon id.
+     * @param int $senderUserId : l'id de mon correspondant.
+     * @return void
+     */
+    public function countUnreadConversations(int $myUserId) : int
+    {
+        $sql = "SELECT COUNT(*) as total FROM conversations
+            WHERE 
+                (user1_id = :userId AND unread_user1 = TRUE)
+                OR
+                (user2_id = :userId AND unread_user2 = TRUE)";
+
+        $result = $this->db->query($sql, ['userId' => $myUserId])->fetch();
+
+        return (int) $result['total'];
     }
 
     /**
@@ -59,13 +78,15 @@ class ConversationManager extends AbstractEntityManager
      * @param Conversation $conv : conversation à ajouter.
      * @return void
      */
-    public function addConversation(Conversation $conv) : void
+    public function addConversation(Conversation $conv) : int
     {
         $sql = "INSERT INTO conversations (user1_id, user2_id, date_creation, date_update) VALUES (:user1_id, :user2_id, NOW(), NOW())";
         $this->db->query($sql, [
             'user1_id' => $conv->getUser1Id(),
             'user2_id' => $conv->getUser2Id(),
         ]);
+
+        return $this->db->getPDO()->lastInsertId();
     }
 
     /**
@@ -75,10 +96,44 @@ class ConversationManager extends AbstractEntityManager
      */
     public function updateLastMessage(Message $message)
     {
-        $sql = "UPDATE conversations SET last_message = :lastMessage, date_update = NOW() WHERE id = :id";
+        $sql = "UPDATE conversations SET last_message = :lastMessage, date_update = NOW(),
+            unread_user1 = CASE 
+                WHEN user1_id != :senderId THEN TRUE 
+                ELSE unread_user1 
+            END,
+            unread_user2 = CASE 
+                WHEN user2_id != :senderId THEN TRUE 
+                ELSE unread_user2 
+            END 
+            WHERE id = :id";
         $this->db->query($sql, [
             'lastMessage' => $message->getContent(),
             'id' => $message->getConversationId(),
+            'senderId' => $message->getSenderId(),
+        ]);
+    }
+
+    /**
+     * Met à jour le dernier message.
+     * @param string $lastMessage : livre à modifier.
+     * @return void
+     */
+    public function iReadConversation(int $myUserId, int $conversationId)
+    {
+        $sql = "UPDATE conversations SET
+            unread_user1 = CASE 
+                WHEN user1_id = :readerId THEN FALSE 
+                ELSE unread_user1 
+            END,
+            unread_user2 = CASE 
+                WHEN user2_id = :readerId THEN FALSE 
+                ELSE unread_user2 
+            END 
+            WHERE id = :conversationId";
+
+        $this->db->query($sql, [
+            'conversationId' => $conversationId,
+            'readerId' => $myUserId
         ]);
     }
 

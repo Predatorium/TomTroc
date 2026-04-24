@@ -23,12 +23,18 @@ class AccountController {
         // Récupération de l'id de l'utilisateur local.
         $userId = $_SESSION['userId'];
 
+        // On recupere les données de l'utilisateur.
         $userManager = new UserManager();
         $user = $userManager->getUserById($userId);
 
+        if (!$user) {
+            throw new Exception("L'utilisateur demandé n'existe pas.");
+        }
+        // On recupere les données des livres de l'utilisateur cible.
         $bookManager = new BookManager();
         $books = $bookManager->getAllBooksOfUserID($userId);
 
+        // On vérifie l'utilisateur existe.
         if (!$user) {
             throw new Exception("L'utilisateur demandé n'existe pas.");
         }
@@ -44,18 +50,22 @@ class AccountController {
     {
         $userId = (int) Utils::request("user_id", -1);
 
-        if ($userId === $_SESSION["userId"]) {
+        // On verifie que j'ai l'id de l'utilisateur connecté.
+        if (Utils::isMe($userId)) {
             Utils::redirect("account");
             return;
         }
 
+        // On recupere les données de l'utilisateur.
         $userManager = new UserManager();
         $user = $userManager->getUserById($userId);
 
+        // On vérifie l'utilisateur existe.
         if (!$user) {
             throw new Exception("L'utilisateur demandé n'existe pas.");
         }
 
+        // On recupere les données des livres de l'utilisateur cible.
         $bookManager = new BookManager();
         $books = $bookManager->getAllBooksOfUserID($userId);
 

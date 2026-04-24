@@ -14,9 +14,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?= "TomTroc - " . $title ?></title>
-        <link rel="stylesheet" href="./css/style.css">
-        <?php require_once './resources/fonts.php'; ?>
-        <script src = "./script/script.js" defer> </script>
+        <link rel="stylesheet" href="./public/css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+        <script src = "./public/script/header.js" defer> </script>
+        <script src = "./public/script/books.js" defer> </script>
+        <script src = "./public/script/messaging.js" defer> </script>
+        <script src = "./public/script/main.js" defer> </script>
     </head>
 
     <body data-page="<?= $title ?? '' ?>">

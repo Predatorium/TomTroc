@@ -6,6 +6,21 @@ class MessagingController {
     {
         Utils::checkIfUserIsConnected();
 
+        $conversationId = (int) Utils::request("conversation_id", -1);
+        
+        if ($conversationId >= 0) {
+            $convManager = new ConversationManager();
+            $conv = $convManager->getConversationsById($conversationId);
+            $userId = $_SESSION["userId"];
+
+            if (!$conv) {
+                throw new Exception();
+            }
+            if ($conv->getUser1Id() != $userId && $conv->getUser2Id() != $userId) {
+                throw new Exception();
+            }
+        }
+
         $view = new View("Messages");
         $view->render("messaging");
     }
@@ -15,21 +30,21 @@ class MessagingController {
         $userId = Utils::request("user_id");
 
         $convManager = new ConversationManager();
-        
-        if (!$convManager->existConversation((int) $_SESSION["userId"], $userId)) {
+        $convId = $convManager->existConversation((int) $_SESSION["userId"], $userId);
 
-            $convManager->addConversation(new Conversation([
+        if ($convId < 0) {
+
+            $convId = $convManager->addConversation(new Conversation([
                 'user1ID' => $_SESSION["userId"] < $userId ? $_SESSION["userId"] : $userId,
                 'user2ID' => $_SESSION["userId"] > $userId ? $_SESSION["userId"] : $userId,
             ]));
         }
 
-        Utils::redirect("messaging");
+        Utils::redirect("messaging", ['conversation_id' => $convId]);
     }
 
     public function sendMessage()
     {
-        Utils::checkIfUserIsConnected();
         $message = new Message([
             'conversationId' => Utils::request("conversation_id"),
             'senderId' => $_SESSION['userId'] ?? 0,
@@ -48,18 +63,10 @@ class MessagingController {
 
     public function getConversation(): void
     {
-        Utils::checkIfUserIsConnected();
-
         $conversationId = (int) Utils::request("conversation_id");
         
         $convManager = new ConversationManager();
         $conv = $convManager->getConversationsById($conversationId);
-
-        if (!$conv) {
-            http_response_code(404);
-            echo json_encode(['error' => 'Conversation introuvable']);
-            exit;
-        }
         
         $otherUserId = Utils::isMe($conv->getUser1Id()) ? $conv->getUser2Id() : $conv->getUser1Id();
         $userManager = new UserManager();
@@ -87,8 +94,6 @@ class MessagingController {
 
     public function getConversations()
     {
-        Utils::checkIfUserIsConnected();
-
         $userId = $_SESSION['userId'];
         $userManager = new UserManager();
 
@@ -119,10 +124,10 @@ class MessagingController {
 
     public function getMessages()
     {
-        Utils::checkIfUserIsConnected();
-
         $lastId = Utils::request("last_id");
         $conversationId = Utils::request("conversation_id");
+        $convManager = new ConversationManager();
+        $convManager->iReadConversation($_SESSION['userId'], $conversationId);
         $userManager = new UserManager();
 
         $msgManager = new MessageManager();
@@ -147,6 +152,17 @@ class MessagingController {
 
         header('Content-Type: application/json');
         echo json_encode($result);
+        exit;
+    }
+
+    public function getCountUnreadConversations()
+    {
+        $userId = $_SESSION['userId'];
+        $convManager = new ConversationManager();
+        $countUnread = $convManager->countUnreadConversations($userId);
+
+        header('Content-Type: application/json');
+        echo json_encode($countUnread);
         exit;
     }
 }

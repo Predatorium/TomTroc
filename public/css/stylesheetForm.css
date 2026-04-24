@@ -19,6 +19,10 @@
     height: 100%;
 }
 
+.formGrid .link {
+    color: black;
+}
+
 .formGrid > div {
     display: flex;
     flex-direction: column;

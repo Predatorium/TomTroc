@@ -8,7 +8,9 @@
     // et tout ce qui sert à configurer. 
 
     define('TEMPLATE_VIEW_PATH', './views/templates/'); // Le chemin vers les templates de vues.
+    define('RESOURCES_PATH', './public/resources/'); // Le chemin vers les resources.
     define('MAIN_VIEW_PATH', TEMPLATE_VIEW_PATH . 'layout.php'); // Le chemin vers le template principal.
+
 
     define('DB_HOST', 'localhost');
     define('DB_NAME', 'TomTroc');

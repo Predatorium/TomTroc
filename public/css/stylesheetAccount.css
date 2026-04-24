@@ -38,6 +38,14 @@
     object-fit: cover;
 }
 
+.userInfo .left .editPicture {
+    color: black;
+}
+
+.userInfo .left .divider {
+    width: 40%;
+}
+
 .userInfo .left .pseudo {
     font-family: var(--fontTitle);
     font-size: 1.5rem;
@@ -214,7 +222,7 @@
         grid-row: 1;
     }
 
-    .accountBooks .book .autor {
+    .accountBooks .book .author {
         grid-column: 2;
         grid-row: 2;
     }

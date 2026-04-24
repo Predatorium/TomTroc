@@ -13,7 +13,7 @@
             <p class="listedSince">Membre depuis <?= Utils::dateSince($user->getDateCreation()) ?></p>
             <p class="library">BIBLIOTHEQUE</p>
             <p class="nbBooks">
-                <img src = "./resources/iconeBook.svg"> 
+                <img src=<?= RESOURCES_PATH . "icone_book.svg" ?>> 
                 <?= count($books)?> livre<?= count($books) > 1 ? "s" : ""?>
             </p>
         </div>
@@ -32,7 +32,7 @@
             <div class="book">
                 <img src = <?= $book->getPicture() ?> alt="image" class="image">
                 <div class="title"><p><?= $book->getTitle() ?></p></div>
-                <div class="autor"><p><?= $book->getAutor() ?></p></div>
+                <div class="author"><p><?= $book->getAuthor() ?></p></div>
                 
                 
                 <p class="descrip"><?= $book->getDescription(120) ?></p>

@@ -21,8 +21,8 @@
                         <input type="text" name="title" id="title" placeholder="Titre">
                     </div>
                     <div>
-                        <label for="autor" class="label">Auteur</label>
-                        <input type="text" name="autor" id="autor" placeholder="Auteur">
+                        <label for="author" class="label">Auteur</label>
+                        <input type="text" name="author" id="author" placeholder="Auteur">
                     </div>
                     <div class="textArea">
                         <label for="comment" class="label">Commentaire</label>

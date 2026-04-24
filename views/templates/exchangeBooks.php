@@ -7,8 +7,8 @@
 <div class="exchange">
     <div class="head">
         <h1 class="">Nos livres à l’échange</h1>
-        <div class="searchArea" id="searchArea">
-            <img src="./resources/magnifier.svg" alt="loupe">
+        <div class="searchArea">
+            <img src=<?= RESOURCES_PATH . "magnifier.svg" ?> alt="loupe">
             <input type="text" id="searchInput" placeholder="Rechercher un livre...">
         </div>
     </div>

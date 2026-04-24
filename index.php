@@ -102,6 +102,11 @@ try {
         
         // Requete sql par javascript.
 
+        case 'getCountUnreadConversations': // requet qui permet de recupérer une conversation précise.
+            $msgController = new MessagingController();
+            $msgController->getCountUnreadConversations();
+            break;
+
         case 'getBooks': // requet qui permet de recupérer tous les livres disponibles avec une recherche sur les noms/auteurs.
             $booksController = new BooksController();
             $booksController->getBooks();

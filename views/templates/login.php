@@ -18,9 +18,9 @@
                     <input type="password" name="password" id="password" required>
                 </div>
                 <button class="button green">Se connecter</button>
-                <p>Pas de compte ? <a href="index.php?action=register">Inscrivez-vous</a></p>
+                <p>Pas de compte ? <a href="index.php?action=register" class="link">Inscrivez-vous</a></p>
             </div>
         </form>
     </div>
-    <img src = "./resources/imageLogin.svg" alt="imageLogin" class="imageLogin">
+    <img src = <?= RESOURCES_PATH . "image_login.svg" ?> alt="imageLogin" class="imageLogin">
 </div>

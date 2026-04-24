@@ -11,7 +11,7 @@ class BookManager extends AbstractEntityManager
      */
     public function getAllBooks() : array
     {
-        $sql = "SELECT * FROM books";
+        $sql = "SELECT * FROM books ORDER BY id DESC";
         $result = $this->db->query($sql);
         $books = [];
 
@@ -27,7 +27,7 @@ class BookManager extends AbstractEntityManager
      */
     public function getAllBooksAvailable() : array
     {
-        $sql = "SELECT * FROM books WHERE available = :available";
+        $sql = "SELECT * FROM books WHERE available = :available ORDER BY id DESC";
         $result = $this->db->query($sql, ['available' => 1]);
         $books = [];
 
@@ -59,8 +59,8 @@ class BookManager extends AbstractEntityManager
      */
     public function getAllBooksSearch(string $search) : array
     {
-        $sql = "SELECT * FROM books WHERE (title = :search OR autor = :search) AND available = :available";
-        $result = $this->db->query($sql, ['search' => $search, 'available' => 1]);
+        $sql = "SELECT * FROM books WHERE (title LIKE :search_like OR author LIKE :search_like) AND available = :available ORDER BY id DESC";
+        $result = $this->db->query($sql, ['search_like' => '%' . $search . '%', 'available' => 1]);
         $books = [];
 
         while ($book = $result->fetch()) {
@@ -123,11 +123,11 @@ class BookManager extends AbstractEntityManager
      */
     public function addBook(Book $book) : void
     {
-        $sql = "INSERT INTO books (user_id, title, autor, description, picture, available) VALUES (:user_id, :title, :autor, :description, :picture, :available)";
+        $sql = "INSERT INTO books (user_id, title, author, description, picture, available) VALUES (:user_id, :title, :author, :description, :picture, :available)";
         $this->db->query($sql, [
             'user_id' => $book->getUserId(),
             'title' => $book->getTitle(),
-            'autor' => $book->getAutor(),
+            'author' => $book->getAuthor(),
             'description' => $book->getDescription(),
             'picture' => $book->getPicture(),
             'available' => $book->getAvailable()
@@ -141,10 +141,10 @@ class BookManager extends AbstractEntityManager
      */
     public function updateBook(Book $book) : void
     {
-        $sql = "UPDATE books SET title = :title, autor = :autor, description = :description, picture = :picture, available = :available WHERE id = :id";
+        $sql = "UPDATE books SET title = :title, author = :author, description = :description, picture = :picture, available = :available WHERE id = :id";
         $this->db->query($sql, [
             'title' => $book->getTitle(),
-            'autor' => $book->getAutor(),
+            'author' => $book->getAuthor(),
             'description' => $book->getDescription(),
             'picture' => $book->getPicture(),
             'available' => $book->getAvailable(),

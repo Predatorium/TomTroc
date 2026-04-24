@@ -13,7 +13,7 @@
     </div>
 
     <div class="chat" id="chat">
-        <a href="" class="link resetLink" id="backConv"><img src="./resources/back.svg" alt="backpage"> retour</a>
+        <a href="" class="link resetLink" id="backConv"><img src = <?= RESOURCES_PATH . "back.svg" ?> alt="backpage"> retour</a>
         <div class="user" id="user">
             <!-- Utilisateur -->
         </div>

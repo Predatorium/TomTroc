@@ -20,8 +20,15 @@ class BooksController {
     public function showDetailBook() : void
     {
         $bookId = Utils::request('book_id', -1);
+
+        // On recupere les données du livre demandé.
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($bookId);
+
+        // On vérifie que les données sont valides.
+        if (!$book) {
+            throw new Exception();
+        }
 
         $userManager = new UserManager();
         
@@ -35,9 +42,21 @@ class BooksController {
     public function showEditBook(): void
     {
         $bookId = Utils::request('book_id', -1);
+
+        // On recupere les données du livre demandé.
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($bookId);
         
+        // On vérifie que les données sont valides.
+        if (!$book) {
+            throw new Exception();
+        }
+
+        //On verifie que je suis le proprietaire du livre.
+        if (!Utils::isMe($book->getUserID())) {
+            throw new Exception();
+        }
+
         $view = new View($book->getTitle());
         $view->render("editBook", ['book' => $book]);
     }
@@ -56,19 +75,19 @@ class BooksController {
 
         // Récupération des données du formulaire.
         $title = htmlspecialchars(Utils::request("title"));
-        $autor = htmlspecialchars(Utils::request("autor"));
+        $author = htmlspecialchars(Utils::request("author"));
         $comment = htmlspecialchars(Utils::request("comment"));
-        $available = (int) Utils::request("available");
+        $available = (bool) Utils::request("available", 1);
 
         // On vérifie que les données sont valides.
-        if (empty($title) || empty($autor) || empty($comment)) {
+        if (empty($title) || empty($author) || empty($comment)) {
             throw new Exception("Tous les champs sont obligatoires. 3");
         }
 
         $newBook = new Book([
             'user_id' => $userId,
             'title' => $title,
-            'autor' => $autor,
+            'author' => $author,
             'description' => $comment,
             'picture' => "",
             'available' => $available,
@@ -88,28 +107,34 @@ class BooksController {
         Utils::checkIfUserIsConnected();
         $bookId = Utils::request("book_id", -1);
 
+        // On recupere les données du livre demandé.
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($bookId);
 
+        // On vérifie que les données sont valides.
+        if (!$book) {
+            throw new Exception();
+        }
+
+        //On verifie que je suis le proprietaire du livre.
         if (!Utils::isMe($book->getUserID())) {
-            Utils::redirect("account");
-            exit;
+            throw new Exception();
         }
 
         // Récupération des données du formulaire.
         $title = htmlspecialchars(Utils::request("title", $book->getTitle()));
-        $autor = htmlspecialchars(Utils::request("autor", $book->getAutor()));
+        $author = htmlspecialchars(Utils::request("author", $book->getAutor()));
         $comment = htmlspecialchars(Utils::request("comment", $book->getDescription()));
         $available = (int) Utils::request("available", $book->getAvailable());
 
         // On vérifie que les données sont valides.
-        if (empty($title) || empty($autor) || empty($comment)) {
+        if (empty($title) || empty($author) || empty($comment)) {
             throw new Exception("Tous les champs sont obligatoires. 3");
         }
 
         $newBook = new Book([
             'title' => $title,
-            'autor' => $autor,
+            'author' => $author,
             'description' => $comment,
             'picture' => $book->getPicture(),
             'available' => $available,
@@ -130,6 +155,20 @@ class BooksController {
 
         $bookId = Utils::request("book_id", -1);
 
+        // On recupere les données du livre demandé.
+        $bookManager = new BookManager();
+        $book = $bookManager->getBookById($bookId);
+
+        // On vérifie que les données sont valides.
+        if (!$book) {
+            throw new Exception();
+        }
+
+        //On verifie que je suis le proprietaire du livre.
+        if (!Utils::isMe($book->getUserID())) {
+            throw new Exception();
+        }
+
         // On supprime le livre.
         $bookManager = new BookManager();
         $bookManager->deleteBook($bookId);
@@ -140,12 +179,12 @@ class BooksController {
 
     public function getBooks(): void
     {
-        Utils::checkIfUserIsConnected();
-
-        $research = Utils::request("research");
+        header('Content-Type: application/json; charset=utf-8');
+        $research = Utils::request("research", "");
         
         $bookManager = new BookManager();
-        $books = empty($research) ? $bookManager->getAllBooksAvailable() : $bookManager->getAllBooksSearch($research) ;
+        $books = [];
+        $books = $bookManager->getAllBooksSearch($research);
         $userManager = new UserManager();
 
         $result = [];
@@ -156,12 +195,11 @@ class BooksController {
                 'id' => $book->getId(),
                 'picture' => $book->getPicture(),
                 'title' => $book->getTitle(),
-                'autor' => $book->getAutor(),
+                'author' => $book->getAuthor(),
                 'seller' => $userManager->getUserById($book->getUserId())->getPseudo(),
             ];
         }
 
-        header('Content-Type: application/json');
         echo json_encode($result);
         exit;
     }

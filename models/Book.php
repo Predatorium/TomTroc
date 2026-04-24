@@ -7,7 +7,7 @@ class Book extends AbstractEntity
 {
     private int $userId;
     private string $title = "";
-    private string $autor = "";
+    private string $author = "";
     private string $description = "";
     private string $picture = "";
     private bool $available = true;
@@ -50,20 +50,20 @@ class Book extends AbstractEntity
 
     /**
      * Setter pour l'auteur.
-     * @param string $autor
+     * @param string $author
      */
-    public function setAutor(string $autor) : void 
+    public function setAuthor(string $author) : void 
     {
-        $this->autor = $autor;
+        $this->author = $author;
     }
 
     /**
      * Getter pour l'auteur.
      * @return string
      */
-    public function getAutor() : string 
+    public function getAuthor() : string 
     {
-        return $this->autor;
+        return $this->author;
     }
 
     /**

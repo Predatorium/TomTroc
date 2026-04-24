@@ -1,27 +1,3 @@
-const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-const toggle = document.getElementById("menu-toggle");
-const menu = document.getElementById("nav-menu");
-
-toggle.addEventListener("click", () => {
-    menu.classList.toggle("active");
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.body.dataset.page === 'Messages') {
-        loadConversations();
-        convIntervalId = setInterval(loadConversations, 2000)
-
-        if (isMobile) {
-            document.getElementById("convs").classList.add("active");
-        }
-    }
-
-    if (document.getElementById("books") != null) {
-        loadBooks("")
-    }
-});
-
 let activeConversationId = null;
 let lastMessageId = -1;
 let convIntervalId = 0;
@@ -50,7 +26,8 @@ function loadConversations() {
             document.getElementById("conversations").innerHTML = html;
             
             if (!isMobile && activeConversationId == null && data.length > 0) {
-                selectConversation(data[0].id);
+                const conversationId = params.get("conversation_id") ?? data[0].id;
+                selectConversation(conversationId);
             }
         });
 }
@@ -171,35 +148,4 @@ if (backConvBalise != null) {
     
         lastMessageId = -1;
     });
-}
-
-const searchInputBalise = document.getElementById("searchInput");
-if (searchInputBalise != null) {
-    document.getElementById("searchInput").addEventListener("change", e =>{
-        loadBooks(document.getElementById("searchInput").value);
-    });
-}
-
-function loadBooks(research) {
-    fetch(`index.php?action=getBooks&research=${research}`)
-        .then(res => res.json())
-        .then(data => {
-            let html = "";
-
-            data.forEach(book => {
-                html += `
-                    <div class="book">
-                        <a href="index.php?action=detailBook&book_id=${book.id}" class="link resetLink">
-                            <img src=${book.picture} alt="unplashArticle" class="image">
-                            <div class="articleInfo">
-                                <h4>${book.title}</h4>
-                                <p class="autor">${book.autor}</p>
-                                <p class="sellBy">Vendu par : ${book.seller}</p>
-                            </div>
-                        </a>
-                    </div>
-                `;
-            });
-            document.getElementById("books").innerHTML = html;
-        });
 }

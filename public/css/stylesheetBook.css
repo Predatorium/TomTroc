@@ -59,6 +59,10 @@
     font-weight: 300;
 }
 
+.detailBookPage .path .link {
+    color: var(--greyText);
+}
+
 .detailBookPage .info {
     display: flex;
     flex-direction: row;
@@ -80,7 +84,7 @@
     gap: 0.7rem;
 }
 
-.bookdetail .autor {
+.bookdetail .author {
     color: var(--greyText);
 }
 
@@ -209,11 +213,17 @@
     object-fit: cover;
 }
 
-.articleInfo {
+.bookInfo {
     padding: 1rem;
 }
 
-.books .book .link .autor {
+.bookInfo .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.books .book .link .author {
     font-size: 0.85rem;
     padding-top: 0.3rem;
     color: var(--greyText);

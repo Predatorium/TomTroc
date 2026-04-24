@@ -22,9 +22,9 @@
                     <input class="whiteInput" type="password" name="password" id="password" required>
                 </div>
                 <button class="button green">S’inscrire</button>
-                <p>Déjà inscrit ? <a href="index.php?action=login">Connectez-vous</a></p>
+                <p>Déjà inscrit ? <a href="index.php?action=login" class="link">Connectez-vous</a></p>
             </div>
         </form>
     </div>
-    <img src = "./resources/imageLogin.svg" alt="imageLogin" class="imageLogin">
+    <img src = <?= RESOURCES_PATH . "image_login.svg" ?> alt="imageLogin" class="imageLogin">
 </div>
