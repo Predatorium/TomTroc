@@ -8,13 +8,13 @@ class AccountController {
      */
     public function showLogin() : void
     {
-        $view = new View("Inscription");
+        $view = new View("Connexion");
         $view->render("login");
     }
 
     public function showRegister() : void
     {
-        $view = new View("Connexion");
+        $view = new View("Inscription");
         $view->render("register");
     }
 
@@ -98,7 +98,7 @@ class AccountController {
         // On ajoute l'utilisateur.
         $userManager = new UserManager();
         $result = $userManager->addUser($user);
-        $user->setId($result);
+        $user = $userManager->getUserById($result);
 
         // On connecte l'utilisateur.
         $_SESSION['user'] = $user;
@@ -106,6 +106,33 @@ class AccountController {
 
         // On redirige vers la page de l'utilisateur.
         Utils::redirect("account");
+    }
+
+    public function getValidConnect(): void
+    {
+        // On récupère les données du formulaire.
+        $email = Utils::request("email");
+        $password = Utils::request("password");
+
+        // On vérifie que l'utilisateur existe.
+        $userManager = new UserManager();
+        $user = $userManager->getUserByEmail($email);
+        if (!$user) {
+            header('Content-Type: application/json');
+            echo json_encode(['error' => 0]);
+            exit;
+        }
+
+        // On vérifie que le mot de passe est correct.
+        if (!password_verify($password, $user->getPassword())) {
+            header('Content-Type: application/json');
+            echo json_encode(['error' => 0]);
+            exit;
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode(['error' => 1]);
+        exit;
     }
 
     public function connectUser() : void 
@@ -135,8 +162,36 @@ class AccountController {
         $_SESSION['user'] = $user;
         $_SESSION['userId'] = $user->getId();
 
-        // On redirige vers la page d'administration.
-        Utils::redirect("account", ['userId' => $user->getId()]);
+        // On redirige vers la mon compte.
+        Utils::redirect("account");
+    }
+
+    public function updateUser(): void
+    {
+        // Récupération des données du formulaire.
+        $pseudo = htmlspecialchars(Utils::request("pseudo", ""));
+        $email = htmlspecialchars(Utils::request("email", ""));
+        $password = htmlspecialchars(Utils::request("password", ""));
+        var_dump($pseudo);
+        var_dump($email);
+        var_dump($password);
+
+        $userManager = new UserManager();
+        $user = $userManager->getUserById($_SESSION['userId']);
+        if (!empty($pseudo) && $pseudo != $user->getPseudo()) {
+            $user->setPseudo($pseudo);
+        }
+        if (!empty($email) && $email != $user->getEmail()) {
+            $user->setEmail($email);
+        }
+        if (!empty($password) && !password_verify($password, $user->getPassword())) {
+            $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
+        }
+
+        $userManager->updateAccount($user);
+
+        // On redirige vers la mon compte.
+        Utils::redirect("account");
     }
 
     /**

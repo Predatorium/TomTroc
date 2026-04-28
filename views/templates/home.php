@@ -2,6 +2,8 @@
     /**
      * Affichage la page d'accueil.
      */
+    /** @var array $books */
+    /** @var UserManager $userManager */
 ?>
 
 <div class="home">

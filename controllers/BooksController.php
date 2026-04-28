@@ -76,11 +76,12 @@ class BooksController {
         // Récupération des données du formulaire.
         $title = htmlspecialchars(Utils::request("title"));
         $author = htmlspecialchars(Utils::request("author"));
+        $picture = htmlspecialchars(Utils::request("picture"));
         $comment = htmlspecialchars(Utils::request("comment"));
         $available = (bool) Utils::request("available", 1);
 
         // On vérifie que les données sont valides.
-        if (empty($title) || empty($author) || empty($comment)) {
+        if (empty($title) || empty($author) || empty($picture)) {
             throw new Exception("Tous les champs sont obligatoires. 3");
         }
 
@@ -89,7 +90,7 @@ class BooksController {
             'title' => $title,
             'author' => $author,
             'description' => $comment,
-            'picture' => "",
+            'picture' => $picture,
             'available' => $available,
         ]);
 
@@ -123,12 +124,13 @@ class BooksController {
 
         // Récupération des données du formulaire.
         $title = htmlspecialchars(Utils::request("title", $book->getTitle()));
-        $author = htmlspecialchars(Utils::request("author", $book->getAutor()));
+        $author = htmlspecialchars(Utils::request("author", $book->getAuthor()));
+        $picture = htmlspecialchars(Utils::request("picture", $book->getPicture()));
         $comment = htmlspecialchars(Utils::request("comment", $book->getDescription()));
         $available = (int) Utils::request("available", $book->getAvailable());
 
         // On vérifie que les données sont valides.
-        if (empty($title) || empty($author) || empty($comment)) {
+        if (empty($title) || empty($author) || empty($picture)) {
             throw new Exception("Tous les champs sont obligatoires. 3");
         }
 
@@ -136,7 +138,7 @@ class BooksController {
             'title' => $title,
             'author' => $author,
             'description' => $comment,
-            'picture' => $book->getPicture(),
+            'picture' => $picture,
             'available' => $available,
             'id' => $bookId,
         ]);

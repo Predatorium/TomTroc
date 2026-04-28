@@ -6,6 +6,8 @@
  *      $title string : le titre de la page.
  *      $content string : le contenu de la page. 
  */
+    /** @var string $title */
+    /** @var string $content */
 
 ?>
 <!DOCTYPE html>
@@ -19,6 +21,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
         <script src = "./public/script/header.js" defer> </script>
+        <script src = "./public/script/form.js" defer> </script>
         <script src = "./public/script/books.js" defer> </script>
         <script src = "./public/script/messaging.js" defer> </script>
         <script src = "./public/script/main.js" defer> </script>

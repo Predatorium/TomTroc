@@ -22,6 +22,17 @@
     padding: 5rem 10%;
 }
 
+.errorMsg {
+    display: none;
+    color: red;
+    font-size: 0.85rem;
+    font-weight: 300;
+}
+
+.errorMsg.visible {
+    display: unset;
+}
+
 @media (max-width: 768px) {
     .login {
         flex-direction: column;

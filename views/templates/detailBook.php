@@ -2,6 +2,8 @@
     /**
      * Affichage la page d'échange de livres.
      */
+    /** @var Book $book */
+    /** @var UserManager $userManager */
 ?>
 
 <div class="detailBookPage fullScreen">
@@ -9,7 +11,7 @@
         <a href="index.php?action=books" class="link resetLink" alt="retour">Nos livres</a> > <?= $book->getTitle() ?>
     </p>
     <div class="info">
-        <img src =<?= $book->getPicture() ?> alt="Couverture du livre" class="imageDetailBook">
+        <img src="<?= $book->getPicture() ?>" alt="Couverture du livre" class="imageDetailBook">
         <div class="bookdetail">
             <h1 class="title" alt="<?= $book->getTitle() ?>"><?= $book->getTitle() ?></h1>
             <p class="author" alt="<?= $book->getAuthor() ?>">par <?= $book->getAuthor() ?></p>

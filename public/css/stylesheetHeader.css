@@ -49,7 +49,8 @@ header {
     padding: 0 6%;
 }
 
-.mainNav .Link {
+.mainNav .Link,
+.navMenu .Link {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -57,7 +58,8 @@ header {
     gap: 0.2rem;
 }
 
-.mainNav .Link .newMsg {
+.mainNav .Link .newMsg, 
+.navMenu .Link .newMsg {
     border-radius: 6.75px;
     background-color: #292929;
     color: white;

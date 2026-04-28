@@ -84,6 +84,11 @@ try {
             $accountController->connectUser();
             break;
 
+        case 'updateUser':
+            $accountController = new AccountController();
+            $accountController->updateUser();
+            break;
+
         case 'disconnectUser':
             $accountController = new AccountController();
             $accountController->disconnectUser();
@@ -101,6 +106,11 @@ try {
             break;
         
         // Requete sql par javascript.
+
+        case 'getValidConnect': // requet qui sert à valider le formulaire de connection.
+            $accountController = new AccountController();
+            $accountController->getValidConnect();
+            break;
 
         case 'getCountUnreadConversations': // requet qui permet de recupérer une conversation précise.
             $msgController = new MessagingController();

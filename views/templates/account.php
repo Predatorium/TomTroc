@@ -2,6 +2,8 @@
     /**
      * Affichage la page d'échange de livres.
      */
+    /** @var User $user */
+    /** @var array $books */
 ?>
 
 <div class="accountContainer">
@@ -24,7 +26,7 @@
             </div>
         </div>
         <div class="right">
-            <form action="index.php?action=updateUser&user_id=<?= $userId ?>" method="post" class="form">
+            <form action="index.php?action=updateUser" method="post" class="form">
                 <div class="formGrid grey">
                     <h4>Vos informations personnelles</h4>
                     <div>
@@ -33,7 +35,7 @@
                     </div>
                     <div>
                         <label for="password" class="label">Mot de passe</label>
-                        <input type="password" name="password" id="password" required>
+                        <input type="password" name="password" id="password">
                     </div>
                     <div>
                         <label for="pseudo" class="label">Pseudo</label>

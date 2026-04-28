@@ -2,6 +2,8 @@
     /**
      * Affichage du profil d'un utilisateur.
      */
+    /** @var User $user */
+    /** @var array $books */
 ?>
 
 <div class="userProfil">
@@ -18,7 +20,7 @@
             </p>
         </div>
         <?php if ($user->getId() !== $_SESSION["userId"]) {?>
-            <a href="index.php?action=sendMessage&user_id=<?= $user->getId() ?>" class="button borderGreen">Envoyer un message</a>
+            <a href="index.php?action=addConversation&user_id=<?= $user->getId() ?>" class="button borderGreen">Écrire un message</a>
         <?php } ?>
     </div>
     <article class="userBooks">

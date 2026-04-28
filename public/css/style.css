@@ -5,9 +5,9 @@
 @import "stylesheetBook.css";
 @import "stylesheetLogin.css";
 @import "stylesheetAccount.css";
-@import "stylesheetForm.css";
 @import "stylesheetUserProfil.css";
 @import "stylesheetMessaging.css";
+@import "stylesheetForm.css";
 
 /**
  * Reset css.
