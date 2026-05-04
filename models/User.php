@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Entité User : un user est défini par son id, un login et un password.
+ * Entité User : un user est défini par son id, un pseudo, un email, un password et une picture.
  */ 
 class User extends AbstractEntity 
 {
@@ -12,8 +12,8 @@ class User extends AbstractEntity
     private ?DateTime $dateCreation = null;
 
     /**
-     * Setter pour le login.
-     * @param string $login
+     * Setter pour le pseudo.
+     * @param string $pseudo
      */
     public function setPseudo(string $pseudo) : void 
     {
@@ -21,7 +21,7 @@ class User extends AbstractEntity
     }
 
     /**
-     * Getter pour le login.
+     * Getter pour le pseudo.
      * @return string
      */
     public function getPseudo() : string 
@@ -31,7 +31,7 @@ class User extends AbstractEntity
 
     /**
      * Setter pour l'email'.
-     * @param string $login
+     * @param string $email
      */
     public function setEmail(string $email) : void 
     {

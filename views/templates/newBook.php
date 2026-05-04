@@ -1,6 +1,6 @@
 <?php
     /**
-     * Affichage la page d'échange de livres.
+     * Affichage la page d'edition d'un nouveau livre.
      */
 ?>
 

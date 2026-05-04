@@ -1,3 +1,9 @@
+<?php
+    /**
+     * Affichage le header du site.
+     */
+?>
+
 <header>
     <nav class="dropdownNav">
 

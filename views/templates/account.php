@@ -1,6 +1,6 @@
 <?php
     /**
-     * Affichage la page d'échange de livres.
+     * Affichage la page de mon profil.
      */
     /** @var User $user */
     /** @var array $books */

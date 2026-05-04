@@ -53,7 +53,7 @@ try {
             $booksController->deleteBook();
             break;
 
-        // Pages en lien avec les comptes et profil des utilisateurs.
+        // Pages en lien avec les comptes et profils des utilisateurs.
         case 'account':
             $accountController = new AccountController();
             $accountController->showAccount();
@@ -64,7 +64,7 @@ try {
             $accountController->showUserProfil();
             break;
             
-        case 'addUser':
+        case 'addUser': // requet sql pour ajouter un utilisateur.
             $accountController = new AccountController();
             $accountController->addUser();
             break;
@@ -84,12 +84,12 @@ try {
             $accountController->connectUser();
             break;
 
-        case 'updateUser':
+        case 'updateUser': // requet sql pour mettre à jour un utilisateur.
             $accountController = new AccountController();
             $accountController->updateUser();
             break;
 
-        case 'disconnectUser':
+        case 'disconnectUser': // requet sql pour se déconnecter.
             $accountController = new AccountController();
             $accountController->disconnectUser();
             break;
@@ -105,7 +105,7 @@ try {
             $msgController->addConversation();
             break;
         
-        // Requete sql par javascript.
+        // Requete sql pour javascript.
 
         case 'getValidConnect': // requet qui sert à valider le formulaire de connection.
             $accountController = new AccountController();

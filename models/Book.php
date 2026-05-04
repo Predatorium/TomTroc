@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Entité User : un user est défini par son id, un login et un password.
+ * Entité Book : un book est défini par son id, par son userId, par son title, par un author, par une description, par une picture et par un available.
  */ 
 class Book extends AbstractEntity 
 {
@@ -117,7 +117,7 @@ class Book extends AbstractEntity
 
     /**
      * Setter pour la disponibilité.
-     * @param string $available
+     * @param bool $available
      */
     public function setAvailable(bool $available) : void 
     {
@@ -126,7 +126,7 @@ class Book extends AbstractEntity
 
     /**
      * Getter pour la disponibilité.
-     * @return string
+     * @return bool
      */
     public function getAvailable() : bool 
     {

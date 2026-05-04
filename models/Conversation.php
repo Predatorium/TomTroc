@@ -15,7 +15,7 @@ class Conversation extends AbstractEntity
 
     /**
      * Setter pour l'id de l'utilisateur 1. 
-     * @param int $userId
+     * @param int $user1ID
      */
     public function setUser1Id(int $user1ID) : void
     {
@@ -33,7 +33,7 @@ class Conversation extends AbstractEntity
 
     /**
      * Setter pour l'id de l'utilisateur 2. 
-     * @param int $userId
+     * @param int $user2ID
      */
     public function setUser2Id(int $user2ID) : void
     {
@@ -49,9 +49,9 @@ class Conversation extends AbstractEntity
         return $this->user2ID;
     }
 
-        /**
+    /**
      * Setter pour le dernier message de la conversation.
-     * @param string $description
+     * @param string $lastMessage
      */
     public function setLastMessage(string $lastMessage) : void
     {
@@ -103,9 +103,9 @@ class Conversation extends AbstractEntity
         return $this->dateCreation;
     }
 
-        /**
+    /**
      * Setter pour la date de mise à jour. Si la date est une string, on la convertit en DateTime.
-     * @param string|DateTime $dateCreation
+     * @param string|DateTime $dateUpdate
      * @param string $format : le format pour la convertion de la date si elle est une string.
      * Par défaut, c'est le format de date mysql qui est utilisé. 
      */
@@ -127,21 +127,37 @@ class Conversation extends AbstractEntity
         return $this->dateUpdate;
     }
 
+    /**
+     * Setter pour la non lecteur du premier utilisateur.
+     * @return void
+     */
     public function setUnreadUser1(bool $unread): void
     {
         $this->unreadUser1 = $unread;
     }
 
+    /**
+     * Getter pour la non lecteur du premier utilisateur.
+     * @return bool
+     */
     public function getUnreadUser1(): bool
     {
         return $this->unreadUser1;
     }
 
+    /**
+     * Setter pour la non lecteur du deuxieme utilisateur.
+     * @return void
+     */
     public function setUnreadUser2(bool $unread): void
     {
         $this->unreadUser2 = $unread;
     }
 
+    /**
+     * Getter pour la non lecteur du deuxieme utilisateur.
+     * @return bool
+     */
     public function getUnreadUser2(): bool
     {
         return $this->unreadUser2;

@@ -1,3 +1,8 @@
+/**
+ * Script en lien avec les pages dédiées aux livres.
+ */
+
+//On essaie de recuperer l'element avec l'id "searchInput".
 const searchInputBalise = document.getElementById("searchInput");
 if (searchInputBalise != null) {
     searchInputBalise.addEventListener("input", e =>{
@@ -5,6 +10,7 @@ if (searchInputBalise != null) {
     });
 }
 
+// fonction qui permet de generer le code html pour chaque vignettes de livre.
 function loadBooks(research) {
     fetch(`index.php?action=getBooks&research=${research}`)
         .then(res => res.json())

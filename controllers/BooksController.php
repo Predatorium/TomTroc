@@ -1,11 +1,11 @@
 <?php
 
 class BooksController {
+
     /**
      * Affiche la page d'échange de livre.
      * @return void
      */
-
     public function showBooks() : void
     {
         $view = new View("Nos livres à l’échange");
@@ -13,10 +13,9 @@ class BooksController {
     }
 
     /**
-     * Affiche la page d'échange de livre.
+     * Affiche la page de detail d'un livre.
      * @return void
      */
-
     public function showDetailBook() : void
     {
         $bookId = Utils::request('book_id', -1);
@@ -39,8 +38,14 @@ class BooksController {
         ]);
     }
 
+    /**
+     * Affiche la page d'édition d'un livre.
+     * @return void
+     */
     public function showEditBook(): void
     {
+        Utils::checkIfUserIsConnected();
+
         $bookId = Utils::request('book_id', -1);
 
         // On recupere les données du livre demandé.
@@ -61,12 +66,20 @@ class BooksController {
         $view->render("editBook", ['book' => $book]);
     }
 
+    /**
+     * Affiche la page d'édition d'un nouveau livre.
+     * @return void
+     */
     public function showNewBook(): void
     {        
         $view = new View("Nouveau Livre");
         $view->render("newBook");
     }
 
+    /**
+     * Ajoute un livre.
+     * @return void
+     */
     public function addBook(): void
     {
         Utils::checkIfUserIsConnected();
@@ -103,6 +116,10 @@ class BooksController {
 
     }
 
+    /**
+     * Met a jour un livre.
+     * @return void
+     */
     public function updateBook(): void
     {
         Utils::checkIfUserIsConnected();
@@ -151,6 +168,10 @@ class BooksController {
         Utils::redirect("account");
     }
 
+    /**
+     * Supprime un livre.
+     * @return void
+     */
     public function deleteBook(): void
     {
         Utils::checkIfUserIsConnected();
@@ -179,6 +200,10 @@ class BooksController {
         Utils::redirect("account");
     }
 
+    /**
+     * Recupere les livres qui correspondent à la recherche pour le javascript.
+     * @return void
+     */
     public function getBooks(): void
     {
         header('Content-Type: application/json; charset=utf-8');
@@ -186,11 +211,13 @@ class BooksController {
         
         $bookManager = new BookManager();
         $books = [];
+        // On recupere tous les livres qui correspondent à la rechercher.
         $books = $bookManager->getAllBooksSearch($research);
         $userManager = new UserManager();
 
         $result = [];
 
+        // On creer un array qui contient toutes les infos dont on a besoin.
         foreach ($books as $book) {
 
             $result[] = [

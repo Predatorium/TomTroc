@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe qui gère les articles.
+ * Classe qui gère les livres.
  */
 class BookManager extends AbstractEntityManager 
 {
@@ -54,7 +54,7 @@ class BookManager extends AbstractEntityManager
     }
 
     /**
-     * Récupère tous les livres rechercher.
+     * Récupère tous les livres dont le titre ou l'auteur correspondent à la recherche.
      * @return array : un tableau d'objets Book.
      */
     public function getAllBooksSearch(string $search) : array
@@ -86,9 +86,9 @@ class BookManager extends AbstractEntityManager
     }
 
     /**
-     * Récupère un article par son id.
-     * @param int $id : l'id de l'article.
-     * @return Article|null : un objet Book ou null si l'article n'existe pas.
+     * Récupère un livre par son id.
+     * @param int $id : l'id de le livre.
+     * @return Book|null : un objet Book ou null si le livre n'existe pas.
      */
     public function getBookById(int $id) : ?Book
     {

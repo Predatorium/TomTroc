@@ -12,7 +12,7 @@ class Message extends AbstractEntity
 
     /**
      * Setter pour l'id de la conversation. 
-     * @param int $userId
+     * @param int $conversationId
      */
     public function setConversationId(int $conversationId) : void
     {
@@ -30,7 +30,7 @@ class Message extends AbstractEntity
 
     /**
      * Setter pour l'id de l'utilisateur qui as envoyé le message. 
-     * @param int $userId
+     * @param int $senderId
      */
     public function setSenderId(int $senderId) : void
     {

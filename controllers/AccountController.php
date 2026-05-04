@@ -12,12 +12,20 @@ class AccountController {
         $view->render("login");
     }
 
+    /**
+     * Affiche la page d'inscription.
+     * @return void
+     */
     public function showRegister() : void
     {
         $view = new View("Inscription");
         $view->render("register");
     }
 
+    /**
+     * Affiche la page mon compte.
+     * @return void
+     */
     public function showAccount() : void
     {
         // Récupération de l'id de l'utilisateur local.
@@ -26,18 +34,14 @@ class AccountController {
         // On recupere les données de l'utilisateur.
         $userManager = new UserManager();
         $user = $userManager->getUserById($userId);
-
+        
+        // On vérifie que l'utilisateur existe.
         if (!$user) {
             throw new Exception("L'utilisateur demandé n'existe pas.");
         }
         // On recupere les données des livres de l'utilisateur cible.
         $bookManager = new BookManager();
         $books = $bookManager->getAllBooksOfUserID($userId);
-
-        // On vérifie l'utilisateur existe.
-        if (!$user) {
-            throw new Exception("L'utilisateur demandé n'existe pas.");
-        }
 
         $view = new View("Mon compte");
         $view->render("account", [
@@ -46,11 +50,15 @@ class AccountController {
         ]);
     }
 
+    /**
+     * Affiche la page de profil.
+     * @return void
+     */
     public function showUserProfil(): void
     {
         $userId = (int) Utils::request("user_id", -1);
 
-        // On verifie que j'ai l'id de l'utilisateur connecté.
+        // On verifie que c'est mon id d'utilisateur.
         if (Utils::isMe($userId)) {
             Utils::redirect("account");
             return;
@@ -76,6 +84,10 @@ class AccountController {
         ]);
     }
 
+    /**
+     * Ajoute un utilisateur.
+     * @return void
+     */
     public function addUser() : void
     {
         // Récupération des données du formulaire.
@@ -108,6 +120,10 @@ class AccountController {
         Utils::redirect("account");
     }
 
+    /**
+     * retourne en json la valider de la connexion à un compte pour le javascript.
+     * @return void
+     */
     public function getValidConnect(): void
     {
         // On récupère les données du formulaire.
@@ -135,6 +151,10 @@ class AccountController {
         exit;
     }
 
+    /**
+     * Connexion.
+     * @return void
+     */
     public function connectUser() : void 
     {
         // On récupère les données du formulaire.
@@ -166,6 +186,10 @@ class AccountController {
         Utils::redirect("account");
     }
 
+    /**
+     * Mise a jour des infos d'un utilisateur.
+     * @return void
+     */
     public function updateUser(): void
     {
         // Récupération des données du formulaire.

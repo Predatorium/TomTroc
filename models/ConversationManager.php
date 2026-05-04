@@ -3,9 +3,9 @@
 class ConversationManager extends AbstractEntityManager
 {
     /**
-     * Récupère une conversation par son id.
-     * @param int $id : l'id de la conversation.
-     * @return Conversation|null : un objet Conversation ou null si la conversation n'existe pas.
+     * Récupère une conversation par l'id d'un de ses utilisateurs.
+     * @param int $myUserId : l'id de l'utilisateur.
+     * @return ?array : un array de Conversation ou null si aucun conversation trouver.
      */
     public function getConversationsByUserId(int $myUserId) : ?array
     {
@@ -40,7 +40,7 @@ class ConversationManager extends AbstractEntityManager
      * Verifier que la conversation existe.
      * @param int $myUserId : mon id.
      * @param int $senderUserId : l'id de mon correspondant.
-     * @return void
+     * @return int
      */
     public function existConversation(int $myUserId, int $senderUserId) : int
     {
@@ -55,10 +55,9 @@ class ConversationManager extends AbstractEntityManager
     }
 
     /**
-     * Verifier que la conversation existe.
+     * Recupere les conversation ou l'utilisateur n'a pas lu au moins un message.
      * @param int $myUserId : mon id.
-     * @param int $senderUserId : l'id de mon correspondant.
-     * @return void
+     * @return int
      */
     public function countUnreadConversations(int $myUserId) : int
     {
@@ -76,7 +75,7 @@ class ConversationManager extends AbstractEntityManager
     /**
      * Ajoute une conversation.
      * @param Conversation $conv : conversation à ajouter.
-     * @return void
+     * @return int
      */
     public function addConversation(Conversation $conv) : int
     {
@@ -91,7 +90,7 @@ class ConversationManager extends AbstractEntityManager
 
     /**
      * Met à jour le dernier message.
-     * @param string $lastMessage : livre à modifier.
+     * @param Message $message
      * @return void
      */
     public function updateLastMessage(Message $message)
@@ -114,8 +113,9 @@ class ConversationManager extends AbstractEntityManager
     }
 
     /**
-     * Met à jour le dernier message.
-     * @param string $lastMessage : livre à modifier.
+     * Met à jour la lecteur de message.
+     * @param int $myUserId : utilisateur qui a lu.
+     * @param int $conversationId : conversation à modifier.
      * @return void
      */
     public function iReadConversation(int $myUserId, int $conversationId)

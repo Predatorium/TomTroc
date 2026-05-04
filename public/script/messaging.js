@@ -1,8 +1,13 @@
+/**
+ * Script en lien avec la messagerie.
+ */
+
 let activeConversationId = null;
 let lastMessageId = -1;
 let convIntervalId = 0;
 let msgIntervalId = 0;
 
+// Sert à charger les conversations dans les quels l'utilisateur local est impliqué.
 function loadConversations() {
     fetch("index.php?action=getConversations")
         .then(res => res.json())
@@ -25,6 +30,7 @@ function loadConversations() {
             });
             document.getElementById("conversations").innerHTML = html;
             
+            // Si on n'est pas sur mobile sélectionner une conversation par default.
             if (!isMobile && activeConversationId == null && data.length > 0) {
                 const conversationId = params.get("conversation_id") ?? data[0].id;
                 selectConversation(conversationId);
@@ -32,9 +38,11 @@ function loadConversations() {
         });
 }
 
+// Sert à selectionner une conversation pour accéder aux messages de cette dernières.
 function selectConversation(id) {
     let activeconv;
 
+    // Si une conversation est deja active on reset les infos utilisateur de la partie messages
     if (activeConversationId  != null){
         activeconv = document.getElementById("conv" + activeConversationId)
         activeconv.classList.remove("selected")
@@ -46,6 +54,7 @@ function selectConversation(id) {
     activeconv = document.getElementById("conv" + id)
     activeconv.classList.add("selected")
 
+    // Info utilisateur avec lequel on echange pour la partie messages.
     fetch(`index.php?action=getConversation&conversation_id=${activeConversationId}`)
         .then(res => res.json())
         .then(data => {
@@ -62,6 +71,7 @@ function selectConversation(id) {
     loadMessages();
     msgIntervalId = setInterval(loadMessages, 2000)
 
+    // Si on est sur mobile deafficher les conversation et afficher les messages.
     if (isMobile) {
         clearInterval(convIntervalId);
         document.getElementById("convs").classList.remove("active");
@@ -69,6 +79,7 @@ function selectConversation(id) {
     }
 }
 
+// Sert à charger les messages de la conversation active.
 function loadMessages() {
     if (!activeConversationId) return;
 
@@ -101,6 +112,8 @@ function loadMessages() {
                 lastMessageId = msg.id;
             });
             document.getElementById("messages").innerHTML += html;
+
+            // Si c'est notre premier chargement de la conversation on scroll jusqu'au dernier message.
             if (firstLoad) {
                 document.getElementById("messages").scrollTop = messages.scrollHeight;
             }
@@ -133,6 +146,7 @@ if (sendBalise != null) {
     });
 }
 
+// Sert à revenir à la liste des conversation sur mobile.
 const backConvBalise = document.getElementById("backConv");
 if (backConvBalise != null) {
     document.getElementById("backConv").addEventListener("click", e =>{

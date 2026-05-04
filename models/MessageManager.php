@@ -3,9 +3,9 @@
 class MessageManager extends AbstractEntityManager
 {
     /**
-     * Récupère un article par son id.
-     * @param int $id : l'id de l'article.
-     * @return Article|null : un objet Article ou null si l'article n'existe pas.
+     * Récupère les messages par leur id de conversation.
+     * @param int $conversationId : l'id de la conversation.
+     * @return ?array : un array de message ou null si la conversation n'existe pas ou si elle ne contient aucun message.
      */
     public function getMessagesByConversationId(int $conversationId) : ?array
     {
@@ -19,7 +19,13 @@ class MessageManager extends AbstractEntityManager
         return $messages;
     }
 
-    public function getNewMessages(int $conversationId, int $lastId) : array
+    /**
+     * Récupère les messages par leur id de conversation et superieur au dernier message recuperer.
+     * @param int $conversationId : l'id de la conversation.
+     * @param int $lastId : l'id du dernier message recuperer.
+     * @return ?array : un array de message ou null si la conversation n'existe pas ou si elle ne contient pas de nouveau message.
+     */
+    public function getNewMessages(int $conversationId, int $lastId) : ?array
     {
         $sql = "SELECT * FROM messages 
                 WHERE conversation_id = :conversationId 
@@ -57,7 +63,7 @@ class MessageManager extends AbstractEntityManager
 
     /**
      * Supprime tout les messages d'une conversation.
-     * @param int $id : l'id de la conversation à supprimer.
+     * @param int $conversationId : l'id de la conversation à supprimer.
      * @return void
      */
     public function deleteMessages(int $conversationId) : void

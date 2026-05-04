@@ -1,3 +1,9 @@
+<?php
+    /**
+     * Affichage le footer du site.
+     */
+?>
+
 <footer>
     <p class="textFooter">Politique de confidentialité</p>
     <p class="textFooter">Mentions légales</p>

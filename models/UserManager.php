@@ -7,8 +7,8 @@
 class UserManager extends AbstractEntityManager 
 {
     /**
-     * Récupère un user par son login.
-     * @param string $login
+     * Récupère un user par son email.
+     * @param string $email
      * @return ?User
      */
     public function getUserByEmail(string $email) : ?User
@@ -23,6 +23,11 @@ class UserManager extends AbstractEntityManager
         return null;
     }
 
+    /**
+     * Récupère un user par son id.
+     * @param string $id
+     * @return ?User
+     */
     public function getUserById(string $id) : ?User
     {
         $sql = "SELECT * FROM users WHERE id = :id";
@@ -34,6 +39,10 @@ class UserManager extends AbstractEntityManager
         return null;
     }
 
+    /**
+     * Ajoute un utilisateur à la base de donnée et retourne son Id.
+     * @return int
+     */
     public function addUser(User $user) : int
     {
         $sql = "INSERT INTO users (pseudo, email, pass_word, date_creation) VALUES (:pseudo, :email, :pass_word, NOW())";
@@ -65,16 +74,5 @@ class UserManager extends AbstractEntityManager
             'pass_word' => $user->getPassword(),
             'id' => $user->getId(),
         ]);
-    }
-
-    /**
-     * Modifie un utilisateur.
-     * @param User $user : utilisateur à modifier.
-     * @return void
-     */
-    public function updatePicture(string $picture) : void
-    {
-        $sql = "UPDATE users SET picture = :picture";
-        $this->db->query($sql, ['picture' => $picture]);
     }
 }

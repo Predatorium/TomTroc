@@ -1,9 +1,14 @@
-const form = document.getElementById("sendForm")
-const error = document.getElementById("errorMsg")
-let tagEmail = document.getElementById("email")
-let tagPassword = document.getElementById("password")
-let tagPseudo = document.getElementById("pseudo")
+/**
+ * Script en lien avec les formulaire de connexion et d'inscription.
+ */
 
+const form = document.getElementById("sendForm")        // le formulaire
+const error = document.getElementById("errorMsg")       // message d'erreur mauvais identifiants
+let tagEmail = document.getElementById("email")         // input email
+let tagPassword = document.getElementById("password")   // input password
+let tagPseudo = document.getElementById("pseudo")       // input pseudo
+
+// On verifie qu'on a bien reussi à recuperer le formulaire.
 if (form != null) {
     form.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -31,12 +36,12 @@ if (form != null) {
     })
 }
 
+// On verifie que les info de connexion sont bonne.
 function ValidConnect() {
     fetch(`index.php?action=getValidConnect&email=${tagEmail.value}&password=${tagPassword.value}`)
         .then(res => res.json())
         .then(data => {
             valid = data.error;
-            console.log(valid);
             if (valid) {
                 form.submit();
             } else {
@@ -61,19 +66,23 @@ if (tagPseudo != null) {
     })
 }
 
+// On verifie que l'email à un format d'email.
 function validEmail(tag) {
     let emailRegExp = new RegExp("[a-zA-Z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
     return emailRegExp.test(tag.value);
 }
 
+// On verifie que le champ n'est pas vide.
 function emptyTag(tag) {
     return tag.value.trim() !== "";
 }
 
+// On verifie que le champ n'est pas vide et qu'il n'y a pas trop de caractère.
 function emptyTagOrTooMuchLenght(tag, length) {
     return tag.value.trim() !== "" && tag.value.length < length;
 }
 
+// On applique le style error si condition n'est pas remplie.
 function errorClass(tag, isValid) {
     if (isValid) {
         tag.classList.remove("error");

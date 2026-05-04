@@ -76,6 +76,11 @@ class Utils {
         return $finalString;
     }
 
+    /**
+     * Cette methode permet de recuperer en chaine de caractere le temps ecoulé depuis une date.
+     * @param DateTime $date.
+     * @return string
+     */
     public static function dateSince(DateTime $date) : string
     {
         $now = new DateTime();
@@ -90,6 +95,11 @@ class Utils {
         return $interval->d . " jour" . ($interval->d > 1 ? "s" : "");
     }
 
+    /**
+     * Cette methode permet de savoir si l'id correspond à l'utilisateur connecté.
+     * @param int $userId.
+     * @return bool
+     */
     public static function isMe(int $userId): bool
     {
         if (isset($_SESSION['userId'])) {
@@ -99,6 +109,10 @@ class Utils {
         return false;
     }
 
+    /**
+     * Cette methode permet de rediriger vers la page de connection si le visiteur n'est pas connecté.
+     * @return void
+     */
     public static function checkIfUserIsConnected() : void
     {
         // On vérifie que l'utilisateur est connecté.
