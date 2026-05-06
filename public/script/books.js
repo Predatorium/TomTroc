@@ -19,11 +19,11 @@ function loadBooks(research) {
 
             data.forEach(book => {
                 html += `
-                    <div class="book" alt="${book.title}" title="${book.title}">
-                        <a href="index.php?action=detailBook&book_id=${book.id}" class="link resetLink">
+                    <div class="book">
+                        <a href="index.php?action=detailBook&book_id=${book.id}" class="link resetLink" title="${book.title}">
                             <img src=${book.picture} alt="illustration livre" class="image">
-                            <div class="bookInfo" alt="info livre">
-                                <h4 class="title">${book.title}</h4>
+                            <div class="bookInfo">
+                                <h2 class="title">${book.title}</h2>
                                 <p class="author">${book.author}</p>
                                 <p class="sellBy">Vendu par : ${book.seller}</p>
                             </div>

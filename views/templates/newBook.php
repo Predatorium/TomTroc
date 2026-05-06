@@ -5,12 +5,11 @@
 ?>
 
 <div class="editBook">
-    <a href="index.php?action=account" class="link resetLink"><img src="./resources/back.svg" alt="backpage"> retour</a>
-    <h3>Créer un livre</h3>
+    <a href="index.php?action=account" class="link resetLink"><img src="<?= RESOURCES_PATH . "back.svg" ?>" alt="backpage"> retour</a>
+    <h1 class="titlePage">Créer un livre</h1>
     <form action="index.php?action=addBook" method="post" class="form row edit">
         <div class="formGrid grey picture">
             <p>Photo</p>
-            <img src="" alt="imageBook" class="imageBook">
             <div>
                 <label for="picture" class="label">Picture</label>
                 <input type="text" name="picture" id="picture" placeholder="URL picture" required>

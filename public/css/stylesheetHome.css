@@ -41,7 +41,7 @@
 
 .discover .left .blockText > p{
     font-size: 1rem;
-    font-weight: 300s;
+    font-weight: 300;
 }
 
 .discover .right {
@@ -50,7 +50,7 @@
     align-items: end;
     gap: 1rem;
     width: 100%;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--greyText);
     font-style: italic;
 }
@@ -108,7 +108,7 @@
     border-radius: 10px;
     padding: 2.7rem 1rem;
     background-color: white;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
 .aboutButton {
@@ -124,6 +124,11 @@
     width: 100%;
 }
 
+.banner .picture {
+    width: 100%;
+    object-fit: cover;
+}
+
 .aboutSubsection .signed {
     display: flex;
     justify-content: space-between;
@@ -131,7 +136,7 @@
 }
 
 .aboutSubsection .signed > p{
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--greyText);
     font-style: italic;
 }

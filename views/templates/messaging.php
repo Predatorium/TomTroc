@@ -6,14 +6,14 @@
 
 <div class="messaging">
     <div class="convs" id="convs">
-        <h3>Messagerie</h3>
+        <h1 class="titlePage">Messagerie</h1>
         <div class="sidebar" id="conversations">
             <!-- Liste des conversations -->
         </div>
     </div>
 
     <div class="chat" id="chat">
-        <a href="" class="link resetLink" id="backConv"><img src = <?= RESOURCES_PATH . "back.svg" ?> alt="backpage"> retour</a>
+        <a href="" class="link resetLink" id="backConv"><img src="<?= RESOURCES_PATH . "back.svg" ?>" alt="backpage"> retour</a>
         <div class="user" id="user">
             <!-- Utilisateur -->
         </div>

@@ -13,6 +13,10 @@
     padding: 5rem 10%;
 }
 
+.accountContainer .titlePage {
+    font-size: 1.6rem;
+}
+
 .accountContainer .userInfo {
     display: flex;
     flex-direction: row;
@@ -88,6 +92,11 @@
     background-color: white;
     padding: 2rem 6%;
     width: 100%;
+}
+
+.myInfo {
+    font-size: 1rem;
+    font-family: var(--fontInter);
 }
 
 .accountBooks {
@@ -220,11 +229,17 @@
     .accountBooks .book .title {
         grid-column: 2;
         grid-row: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .accountBooks .book .author {
         grid-column: 2;
         grid-row: 2;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     
     .accountBooks .book .descrip {

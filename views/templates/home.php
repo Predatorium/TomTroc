@@ -10,25 +10,25 @@
     <div class="discover">
         <div class="left">
             <div class="blockText">
-                <h1>Rejoignez nos lecteurs passionnés</h1>
+                <h1 class="titlePage">Rejoignez nos lecteurs passionnés</h1>
                 <p>Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres.
             </div>
-            <a href="index.php?action=books" class="button resize green" alt="Lien vers nos livres">Découvrir</a>
+            <a href="index.php?action=books" class="button resize green" title="Lien vers nos livres">Découvrir</a>
         </div>
         <div class="right">
-            <img src = <?= RESOURCES_PATH . "illustration_home.svg" ?> alt="illustration découverte" class="imageDiscover">
+            <img src="<?= RESOURCES_PATH . "illustration_home.svg" ?>" alt="illustration découverte" class="imageDiscover">
             <p>Hamza
         </div>
     </div>
     <div class="lastBooks">
         <h2 class="titleCenter">Les derniers livres ajoutés</h2>
-        <article class="books" alt="Nos derniers livres ajoutés">
+        <article class="books">
             <?php  foreach ($books as $book){ ?>
-                <div class="book" alt="<?= $book->getTitle() ?>" title="<?= $book->getTitle() ?>">
-                    <a href="index.php?action=detailBook&book_id=<?= $book->getId() ?>" class="link resetLink">
-                        <img src = <?= $book->getPicture() ?> alt="illustration livre" class="image">
-                        <div class="bookInfo" alt="info livre">
-                            <h4 class="title"><?= $book->getTitle() ?></h4>
+                <div class="book" >
+                    <a href="index.php?action=detailBook&book_id=<?= $book->getId() ?>" class="link resetLink" title="<?= $book->getTitle() ?>">
+                        <img src="<?= $book->getPicture() ?>" alt="illustration livre" class="image">
+                        <div class="bookInfo">
+                            <h3 class="title"><?= $book->getTitle() ?></h3>
                             <p class="author"><?= $book->getAuthor() ?></p>
                             <p class="sellBy">Vendu par : <?= $userManager->getUserById($book->getUserId())->getPseudo() ?></p>
                         </div>
@@ -36,7 +36,7 @@
                 </div>
             <?php  }?>
         </article>
-        <a href="index.php?action=books" class="button green resize" alt="Lien vers nos livres">Voir tous les livres</a>
+        <a href="index.php?action=books" class="button green resize">Voir tous les livres</a>
     </div>
     <div class="about">
         <h2 class="titleCenter">Comment ça marche ?</h2>
@@ -48,9 +48,12 @@
             <p>Proposez un échange et discutez avec d'autres passionnés de lecture.</p>
         </div>
         <div class="aboutButton">
-            <a href="index.php?action=books" class="button borderGreen resize" alt="Lien vers nos livres">Voir tous les livres</a>
+            <a href="index.php?action=books" class="button borderGreen resize">Voir tous les livres</a>
         </div>
-        <img src = <?= RESOURCES_PATH . "banner_about.svg" ?> alt="banner" class="banner">
+        <picture class="banner">
+            <source media="(max-width: 768px)" srcset=<?= RESOURCES_PATH . "banner_mobile.svg" ?>>
+            <img src="<?= RESOURCES_PATH . "banner_about.svg" ?>" alt="banner" class="picture">
+        </picture>
         <div class="aboutSubsection">
             <h2>Nos valeurs</h2>
             <br>
@@ -63,9 +66,9 @@
             <p>Nous sommes passionnés par la création d'une plateforme conviviale qui permet aux lecteurs de se connecter, de partager leurs découvertes littéraires et d'échanger 
                 des livres qui attendent patiemment sur les étagères.</p>
             <br>
-            <div class="signed" alt="signature">
+            <div class="signed">
                 <p>L’équipe Tom Troc</p>
-                <img src = <?= RESOURCES_PATH . "heart.svg" ?> alt="coeur" class="heart">
+                <img src="<?= RESOURCES_PATH . "heart.svg" ?>" alt="coeur" class="heart">
             </div>
         </div>
     </div>

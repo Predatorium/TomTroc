@@ -8,7 +8,7 @@
     <div class="left">
         <form action="index.php?action=connectUser" method="post" class="form" id="sendForm">
             <div class="formGrid white">
-                <h2>Connexion</h2>
+                <h1 class="titlePage">Connexion</h1>
                 <p class="errorMsg" id="errorMsg">Utilisateur ou mot de passe non valide.</p>
                 <div>
                     <label for="email" class="label">Adresse email</label>
@@ -23,5 +23,5 @@
             </div>
         </form>
     </div>
-    <img src = <?= RESOURCES_PATH . "image_login.svg" ?> alt="imageLogin" class="imageLogin">
+    <img src="<?= RESOURCES_PATH . "image_login.svg" ?>" alt="imageLogin" class="imageLogin">
 </div>

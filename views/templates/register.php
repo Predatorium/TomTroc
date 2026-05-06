@@ -8,7 +8,7 @@
     <div class="left">
         <form action="index.php?action=addUser" method="post" class="form" id="sendForm">
             <div class="formGrid white">
-                <h2>Inscription</h2>
+                <h1 class="titlePage">Inscription</h1>
                 <div>
                     <label for="pseudo" class="label">Pseudo</label>
                     <input type="text" id="pseudo" name="pseudo" placeholder="Patrick (15 caractères max)">
@@ -26,5 +26,5 @@
             </div>
         </form>
     </div>
-    <img src = <?= RESOURCES_PATH . "image_login.svg" ?> alt="imageLogin" class="imageLogin">
+    <img src="<?= RESOURCES_PATH . "image_login.svg" ?>" alt="imageLogin" class="imageLogin">
 </div>

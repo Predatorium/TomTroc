@@ -36,6 +36,12 @@
     margin: 20px 0;
 }
 
+.titlePage {
+    font-size: 2.2rem;
+    font-family: var(--fontTitle);
+    font-weight: 400;
+}
+
 /** 
  * Bouton.
  */
@@ -73,14 +79,6 @@ button {
 .button:hover {
     color: white;
     background-color: var(--secundaryGreen);
-}
-
-
-@media (max-width: 992px) {
-    
-    :root {
-        font-size: 14px;
-    }
 }
 
 @media (min-width: 769px) {

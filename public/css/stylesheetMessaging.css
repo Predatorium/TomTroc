@@ -13,16 +13,17 @@
     overflow: hidden;
 }
 
+.messaging .titlePage {
+    font-size: 1.6rem;
+    padding: 3.4rem 0 2rem 2rem;
+}
+
 .messaging .convs {
     display: flex;
     flex-direction: column;
     width: 30%;    
     background-color: var(--backgroundLight);
     overflow-y: auto;
-}
-
-.messaging .convs > h3 {
-    padding: 5rem 0 2rem 2rem;
 }
 
 .sidebar {
@@ -49,6 +50,8 @@
 .conv .info {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    gap: 0.2rem;
     width: 100%;
     padding: 0 0.75rem;
 }
@@ -57,6 +60,19 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.info .pseudo{
+    font-size: 0.8rem;
+}
+
+.info .update{
+    font-size: 0.7rem;
+}
+
+.info .lastMsg{
+    font-size: 0.7rem;
+    color: var(--greyText);
 }
 
 .chat {
@@ -79,6 +95,11 @@
     align-items: center;
     padding: 0.5rem 0;
     gap: 0.5rem;
+}
+
+.chat .user .pseudo {
+    font-size: 0.8rem;
+    font-weight: 600;
 }
 
 .messages {
@@ -125,6 +146,7 @@
     background-color: #EDF2F6;
     padding: 0.8rem 1rem;
     border-radius: 3px;
+    font-size: 0.7rem;
 }
 
 .msg.other {
@@ -136,6 +158,7 @@
     background-color: white;
     padding: 0.8rem 1rem;
     border-radius: 3px;
+    font-size: 0.7rem;
 }
 
 .chat .sendForm {

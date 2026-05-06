@@ -93,7 +93,7 @@
 }
 
 .bookdetail .synopsis {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     padding: 1rem 0 2rem 0;
 }
 
@@ -102,12 +102,13 @@
 }
 
 .bookdetail .pseudoUser {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
 .bookdetail .divider {
     background-color: var(--greyText);
     width: 1.6rem;
+    min-height: 1px;
 }
 
 .bookdetail .userInfo {
@@ -142,6 +143,10 @@
     height: 100%;
 }
 
+.editBook .titlePage {
+    font-size: 1.6rem;
+}
+
 .editBook .link {
     color: var(--greyText);
 }
@@ -162,7 +167,7 @@
     display: flex;
     flex-direction: column;
     width: 50%;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
 .edit .picture .imageBook {
@@ -221,10 +226,12 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 1rem;
+    font-family: var(--fontInter);
 }
 
 .books .book .link .author {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     padding-top: 0.3rem;
     color: var(--greyText);
 }

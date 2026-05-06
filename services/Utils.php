@@ -59,21 +59,24 @@ class Utils {
      */
     public static function format(string $string) : string
     {
-        // Etape 1, on protège le texte avec htmlspecialchars.
-        $finalString = htmlspecialchars($string, ENT_QUOTES);
+        // 1. Corrige les entités HTML déjà présentes (évite le double encodage)
+        $string = htmlspecialchars_decode($string, ENT_QUOTES);
 
-        // Etape 2, le texte va être découpé par rapport aux retours à la ligne, 
-        $lines = explode("\n", $finalString);
+        // 2. Normalise tous les types de retours à la ligne
+        $string = preg_replace('/\r\n|\r/', "\n", $string);
 
-        // On reconstruit en mettant chaque ligne dans un paragraphe (et en sautant les lignes vides).
-        $finalString = "";
-        foreach ($lines as $line) {
-            if (trim($line) != "") {
-                $finalString .= "<p>$line</p>";
-            }
+        // 3. Sépare les paragraphes (une ou plusieurs lignes vides = nouveau paragraphe)
+        $paragraphs = preg_split('/\n\s*\n/', trim($string));
+
+        // 4. Sécurise + encapsule en <p>
+        $html = "";
+        foreach ($paragraphs as $p) {
+            $p = htmlspecialchars(trim($p), ENT_QUOTES, 'UTF-8');
+            $p = nl2br($p);
+            $html .= "<p>$p</p><br>";
         }
-        
-        return $finalString;
+
+        return $html;
     }
 
     /**

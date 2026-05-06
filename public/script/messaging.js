@@ -20,10 +20,10 @@ function loadConversations() {
                         <img src="${conv.picture}" alt="convPicture" class="picture">
                         <div class="info">
                             <div class="upper">
-                                <p>${conv.pseudo}</p>
-                                <p>${conv.lastUpdate}</p>
+                                <p class="pseudo">${conv.pseudo}</p>
+                                <p class="update">${conv.lastUpdate}</p>
                             </div>
-                            <p>${conv.lastMessageLength < 1 ? "..." : conv.lastMessage}</p>
+                            <p class="lastMsg">${conv.lastMessageLength < 1 ? "..." : conv.lastMessage}</p>
                         </div>
                     </div>
                 `;
