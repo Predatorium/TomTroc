@@ -9,7 +9,7 @@ class BooksController {
     public function showBooks() : void
     {
         $view = new View("Nos livres à l’échange");
-        $view->render("exchangeBooks");
+        $view->render("exchangeBooks", ['selected' => 1]);
     }
 
     /**
@@ -35,6 +35,7 @@ class BooksController {
         $view->render("detailBook", [
             'book' => $book,
             'userManager' => $userManager,
+            'selected' => 1
         ]);
     }
 
@@ -63,7 +64,10 @@ class BooksController {
         }
 
         $view = new View($book->getTitle());
-        $view->render("editBook", ['book' => $book]);
+        $view->render("editBook", [
+            'book' => $book,
+            'selected' => 3
+        ]);
     }
 
     /**
@@ -73,7 +77,7 @@ class BooksController {
     public function showNewBook(): void
     {        
         $view = new View("Nouveau Livre");
-        $view->render("newBook");
+        $view->render("newBook", ['selected' => 3]);
     }
 
     /**

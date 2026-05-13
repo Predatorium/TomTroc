@@ -18,6 +18,7 @@ class HomeController {
         $view->render("home", [
             'books' => $books,
             'userManager' => $userManager,
+            'selected' => 0,
         ]);
     }
 }

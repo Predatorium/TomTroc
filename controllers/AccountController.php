@@ -9,7 +9,7 @@ class AccountController {
     public function showLogin() : void
     {
         $view = new View("Connexion");
-        $view->render("login");
+        $view->render("login", ['selected' => 3]);
     }
 
     /**
@@ -19,7 +19,7 @@ class AccountController {
     public function showRegister() : void
     {
         $view = new View("Inscription");
-        $view->render("register");
+        $view->render("register", ['selected' => 2]);
     }
 
     /**
@@ -47,6 +47,7 @@ class AccountController {
         $view->render("account", [
             'user' => $user,
             'books' => $books,
+            'selected' => 3
         ]);
     }
 
@@ -81,6 +82,7 @@ class AccountController {
         $view->render("userProfil", [
             'user' => $user,
             'books' => $books,
+            'selected' => -1,
         ]);
     }
 

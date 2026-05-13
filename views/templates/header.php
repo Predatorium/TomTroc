@@ -2,6 +2,7 @@
     /**
      * Affichage le header du site.
      */
+    /** @var int $selected */
 ?>
 
 <header>
@@ -11,22 +12,22 @@
 
         <div class="navMenu" id="nav-menu">
             
-            <a href="index.php" class="Link resetLink">Accueil</a>
-            <a href="index.php?action=books" class="Link resetLink">Nos livres à l’échange</a>
+            <a href="index.php" class="<?= implode(' ', array_filter(['Link', Utils::isSelected(0, $selected), 'resetLink'])) ?>">Accueil</a>
+            <a href="index.php?action=books" class="<?= implode(' ', array_filter(['Link', Utils::isSelected(1, $selected), 'resetLink'])) ?>">Nos livres à l’échange</a>
             <?php if (isset($_SESSION['user'])) { ?>
-                <div class="Link">
+                <a href="index.php?action=messaging" class="<?= implode(' ', array_filter(['Link', Utils::isSelected(2, $selected), 'resetLink'])) ?>">
                     <img src="<?= RESOURCES_PATH . "icon_messaging.svg" ?>" alt="iconMessaging" class="iconMessaging">
-                    <a href="index.php?action=messaging" class="resetLink">Messagerie</a>
-                    <p class="newMsg" id="newMsgMobile"></p>
-                </div>
-                <div class="Link">
+                    <span>Messagerie</span>
+                    <span class="newMsg" id="newMsgMobile"></span>
+                </a>
+                <a href="index.php?action=account" class="<?= implode(' ', array_filter(['Link', Utils::isSelected(3, $selected), 'resetLink'])) ?>">
                     <img src="<?= RESOURCES_PATH . "icon_account.svg" ?>" alt="iconAccount" class="iconAccount">
-                    <a href="index.php?action=account" class="resetLink">Mon compte</a>
-                </div>
+                    <span>Mon compte</span>
+                </a>
                 <a href="index.php?action=disconnectUser" class="Link resetLink">Déconnexion</a>
             <?php } else { ?>
-                <a href="index.php?action=register" class="Link resetLink">Inscription</a>
-                <a href="index.php?action=login" class="Link resetLink">Connexion</a>
+                <a href="index.php?action=register" class="<?= implode(' ', array_filter(['Link', Utils::isSelected(2, $selected), 'resetLink'])) ?>">Inscription</a>
+                <a href="index.php?action=login" class="<?= implode(' ', array_filter(['Link', Utils::isSelected(3, $selected), 'resetLink'])) ?>">Connexion</a>
             <?php } ?>
 
         </div>
@@ -37,28 +38,28 @@
     <nav class = "mainNav">
 
         <div class="navLeft"> <img src="<?= RESOURCES_PATH . "logo_nav.svg" ?>" alt="Logo"> 
-            <a href="index.php" class = "Link resetLink"> Accueil </a> 
-            <a href="index.php?action=books" class = "Link resetLink"> Nos livres à l’échange </a> 
+            <a href="index.php" class = "<?= implode(' ', array_filter(['Link', Utils::isSelected(0, $selected), 'resetLink'])) ?>"> Accueil </a> 
+            <a href="index.php?action=books" class = "<?= implode(' ', array_filter(['Link', Utils::isSelected(1, $selected), 'resetLink'])) ?>"> Nos livres à l’échange </a> 
         </div> 
 
         <div class="navRight">
 
             <?php if (isset($_SESSION['user'])) { ?>
-                <div class="Link">
+                <a href="index.php?action=messaging" class="<?= implode(' ', array_filter(['Link', Utils::isSelected(2, $selected), 'resetLink'])) ?>">
                     <img src="<?= RESOURCES_PATH . "icon_messaging.svg" ?>" alt="iconMessaging" class="iconMessaging">
-                    <a href="index.php?action=messaging" class="resetLink">Messagerie</a>
-                    <p class="newMsg" id="newMsg"></p>
-                </div>
-                <div class="Link">
+                    <span>Messagerie</span>
+                    <span class="newMsg" id="newMsg"></span>
+                </a>
+                <a href="index.php?action=account" class="<?= implode(' ', array_filter(['Link', Utils::isSelected(3, $selected), 'resetLink'])) ?>">
                     <img src="<?= RESOURCES_PATH . "icon_account.svg" ?>" alt="iconAccount" class="iconAccount">
-                    <a href="index.php?action=account" class="resetLink">Mon compte</a>
-                </div>
+                    <span>Mon compte</span>
+                </a>
                 <a href="index.php?action=disconnectUser" class = "Link resetLink"> Déconnexion </a> 
             <?php }
             else { ?>
                 <div></div>
-                <a href="index.php?action=register" class = "Link resetLink"> Inscription </a> 
-                <a href="index.php?action=login" class = "Link resetLink"> Connexion </a> 
+                <a href="index.php?action=register" class = "<?= implode(' ', array_filter(['Link', Utils::isSelected(2, $selected), 'resetLink'])) ?>"> Inscription </a> 
+                <a href="index.php?action=login" class = "<?= implode(' ', array_filter(['Link', Utils::isSelected(3, $selected), 'resetLink'])) ?>"> Connexion </a> 
             <?php } ?>
 
         </div> 

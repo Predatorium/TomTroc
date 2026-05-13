@@ -4,8 +4,8 @@
 
 - Commencer par cloner le projet. 
 - installez le projet chez vous, dans un dossier exécuté par un serveur local (type MAMP, WAMP, LAMP, etc...)
-- Une fois installé chez vous, créez un base de données vide appelée : "tomtroc"
-- Importez le fichier tomtroc.sql dans votre base de données.
+- Une fois installé chez vous, créez un base de données vide appelée : "tomtroc2"
+- Importez le fichier tomtroc2.sql dans votre base de données.
 
 ## Lancez le projet ! 
 

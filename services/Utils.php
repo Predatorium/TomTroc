@@ -123,4 +123,15 @@ class Utils {
             Utils::redirect("login");
         }
     }
+
+    /**
+     * Cette methode permet de retourner selected pour le menu de navigation.
+     * @param int $indexSelected : l'index selectionner.
+     * @param int $index : l'index de l'élement.
+     * @return string
+     */
+    public static function isSelected(int $index, ?int $indexSelected = -1) : string
+    {
+        return $indexSelected == $index ? 'selected' : '';
+    }
 }

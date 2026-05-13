@@ -66,6 +66,10 @@ header {
     padding: 0.2rem;
 }
 
+.mainNav .Link.selected {
+    font-weight: 600;
+}
+
 .mainNav .Link:hover {
     font-weight: 600;
 }

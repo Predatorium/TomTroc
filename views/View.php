@@ -33,6 +33,7 @@ class View
         // Les deux variables ci-dessous sont utilisées dans le "main.php" qui est le template principal.
         $content = $this->_renderViewFromTemplate($viewPath, $params);
         $title = $this->title;
+        extract($params); // On transforme les diverses variables stockées dans le tableau "params" en véritables variables qui pourront être lues dans le template.
         ob_start();
         require(MAIN_VIEW_PATH);
         echo ob_get_clean();

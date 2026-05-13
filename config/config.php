@@ -13,6 +13,6 @@
 
 
     define('DB_HOST', 'localhost');
-    define('DB_NAME', 'TomTroc');
+    define('DB_NAME', 'tomtroc2');
     define('DB_USER', 'root');
     define('DB_PASS', '');

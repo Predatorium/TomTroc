@@ -30,7 +30,7 @@ class MessagingController {
         }
 
         $view = new View("Messages");
-        $view->render("messaging");
+        $view->render("messaging", ['selected' => 2]);
     }
 
     /**
