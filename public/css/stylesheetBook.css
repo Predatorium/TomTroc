@@ -30,7 +30,8 @@
     height: 3rem;
     padding: 0.7rem;
     background-color: white;
-    max-width: 22rem;
+    max-width: 20rem;
+    width: 100%;
 }
 
 .searchArea > input {
@@ -197,8 +198,8 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    gap: 3rem;
+    justify-content: space-around;
+    gap: 2rem;
     max-width: 57.5rem;
 }
 
@@ -213,8 +214,8 @@
 }
 
 .link .image {
-    height: 12rem;
     width: 12rem;
+    height: 12rem;
     object-fit: cover;
 }
 
@@ -243,12 +244,6 @@
     font-style: italic;
 }
 
-@media (max-width: 590px) {
-    .exchange .head {
-        flex-direction: column;
-    }
-}
-
 @media (max-width: 992px) {
 
     .books {
@@ -256,13 +251,13 @@
     }
 
     .books .book .link {
-        width: 11.5rem;
+        width: 11rem;
         height: 18.5rem;
     }
 
     .link .image {
+        width: 11rem;
         height: 11.5rem;
-        width: 11.5rem;
     }
 }
 
@@ -270,6 +265,10 @@
 
     .detailBookPage .path {
         display: none;
+    }
+
+    .exchange .head {
+        flex-direction: column;
     }
 
     .detailBookPage .info {

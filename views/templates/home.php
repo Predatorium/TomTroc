@@ -17,7 +17,7 @@
         </div>
         <div class="right">
             <img src="<?= RESOURCES_PATH . "illustration_home.svg" ?>" alt="illustration découverte" class="imageDiscover">
-            <p>Hamza
+            <p class="author">Hamza
         </div>
     </div>
     <div class="lastBooks">

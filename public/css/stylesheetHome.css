@@ -30,13 +30,13 @@
     justify-content: center;    /* horizontal */
     gap: 3rem;
     width: 100%;
-    padding: 0 5%;
 }
 
 .discover .left .blockText {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    max-width: 20.5rem;
 }
 
 .discover .left .blockText > p{
@@ -154,6 +154,14 @@
         justify-content: center;    /* horizontal */
         padding: 0 0 5rem 0;
         width: 100%;
+    }
+
+    .discover .left {
+        padding: 0 5%;
+    }
+
+    .discover .left .blockText {
+        max-width: unset;
     }
 
     .discover .right .imageDiscover {
