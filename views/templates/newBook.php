@@ -9,7 +9,7 @@
     <h1 class="titlePage">Créer un livre</h1>
     <form action="index.php?action=addBook" method="post" class="form row edit">
         <div class="formGrid grey picture">
-            <p>Photo</p>
+            <p class="label">Photo</p>
             <div>
                 <label for="picture" class="label">Picture</label>
                 <input type="text" name="picture" id="picture" placeholder="URL picture" required>

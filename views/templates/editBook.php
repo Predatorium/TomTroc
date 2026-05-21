@@ -10,8 +10,10 @@
     <h1 class="titlePage">Modifier les informations</h1>
     <form action="index.php?action=updateBook&book_id=<?= $book->getId() ?>" method="post" class="form row edit">
         <div class="formGrid grey picture">
-            <p>Photo</p>
-            <img src="<?= $book->getPicture() ?? "" ?>" alt="illustration livre" class="imageBook">
+            <div>
+                <p class="label">Photo</p>
+                <img src="<?= $book->getPicture() ?? "" ?>" alt="illustration livre" class="imageBook">
+            </div>
             <div>
                 <label for="picture" class="label">Picture</label>
                 <input type="text" name="picture" id="picture" value="<?= htmlspecialchars($book->getPicture()) ?>" placeholder="URL picture">
