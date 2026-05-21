@@ -19,7 +19,7 @@
                 <?= count($books)?> livre<?= count($books) > 1 ? "s" : ""?>
             </p>
         </div>
-        <?php if (!Utils::isMe($user->getId())) {?>
+        <?php if (!Utils::isMe($user->getId()) && isset($_SESSION['userId'])) {?>
             <a href="index.php?action=addConversation&user_id=<?= $user->getId() ?>" class="button borderGreen">Écrire un message</a>
         <?php } ?>
     </div>

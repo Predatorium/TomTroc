@@ -46,10 +46,11 @@ class ConversationManager extends AbstractEntityManager
     {
         $sql = "SELECT * FROM conversations WHERE user1_id = LEAST(:myUserId, :senderUserId) AND user2_id = GREATEST(:myUserId, :senderUserId);";
         $result = $this->db->query($sql, ['myUserId' => $myUserId, 'senderUserId' => $senderUserId]);
-        $conv = new Conversation($result->fetch());
+        $conv = $result->fetch();
 
         if ($conv) {
-            return $conv->getId();
+            $tmpConv = new Conversation($conv);
+            return $tmpConv->getId();
         }
         return -1;
     }

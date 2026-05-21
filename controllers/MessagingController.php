@@ -39,6 +39,8 @@ class MessagingController {
      */
     public function addConversation()
     {
+        Utils::checkIfUserIsConnected();
+        
         $userId = Utils::request("user_id");
 
         $convManager = new ConversationManager();
@@ -48,8 +50,8 @@ class MessagingController {
         // On creer la conversation si on en a pas trouvé.
         if ($convId < 0) {
             $convId = $convManager->addConversation(new Conversation([
-                'user1ID' => $_SESSION["userId"] < $userId ? $_SESSION["userId"] : $userId,
-                'user2ID' => $_SESSION["userId"] > $userId ? $_SESSION["userId"] : $userId,
+                'user1ID' => min($_SESSION["userId"], $userId),
+                'user2ID' => max($_SESSION["userId"], $userId),
             ]));
         }
 

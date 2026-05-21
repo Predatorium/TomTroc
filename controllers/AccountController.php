@@ -28,6 +28,8 @@ class AccountController {
      */
     public function showAccount() : void
     {
+        Utils::checkIfUserIsConnected();
+
         // Récupération de l'id de l'utilisateur local.
         $userId = $_SESSION['userId'];
 
