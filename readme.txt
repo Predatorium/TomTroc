@@ -3,9 +3,9 @@
 Site d'échange de livres pour une association de partage de livres : les membres publient leurs livres, consultent ceux des autres et se contactent par messagerie. Projet réalisé en PHP dans le cadre de la formation full stack d'OpenClassrooms.
 
 ![Page d'accueil](docs/Home.png)
-![Page d'accueil](docs/Librairy.png)
-![Page d'accueil](docs/Detail.png)
-![Page d'accueil](docs/Profile.png)
+![Librairie](docs/Librairy.png)
+![Detail](docs/Detail.png)
+![Profile](docs/Profile.png)
 
 ## Fonctionnalités
 
