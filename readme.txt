@@ -62,7 +62,7 @@ Si les dates ne s'affichent pas correctement, l'extension `intl` n'est probablem
 - Requêtes asynchrones pour la messagerie et la recherche, avec des actions dédiées côté serveur.
 - Gestion des erreurs centralisée dans le routeur.
 
-Ce projet et mon premier ou j'ai conçu un site en entier, j'ai créer tout le systeme de routing en Php, et un systeme de messagerie notamment.
+Ce projet est le premier que j'ai conçu entièrement, j'ai créer tout le systeme de routing en Php, et un systeme de messagerie notamment.
 
 ## Auteur
 
